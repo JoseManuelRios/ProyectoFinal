@@ -202,13 +202,13 @@ section > #opciones{
     width:80%;
 }
 
-#opcion > img{
+#opcion img{
     width:100%;
     position:relative;
     filter:brightness(40%);
 }
 
-#opcion > #textoOpcion{
+#opcion #textoOpcion{
     width:100%;
     height:100%;
     position:absolute;
