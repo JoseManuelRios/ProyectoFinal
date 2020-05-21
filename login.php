@@ -4,7 +4,7 @@
         <title>SPORT DESIGN</title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <link rel="stylesheet" type="text/css" href="css/login.css"/>
         <!-- Iconos diseñados por <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</a> -->
         <script type='text/javascript' src='jq/jquery-3.1.1.min.js'></script>
         <script type="text/javascript" src="js/script.js"></script>
@@ -12,7 +12,7 @@
     <body>
         <header class="sticky">
             <nav>
-                <a href="index.html"><img src="Img/icono.svg" id="icono" alt="icono" title="icono"/></a>
+                <a href="index.php"><img src="Img/icono.svg" id="icono" alt="icono" title="icono"/></a>
                 <div>
                     <h2>SPORT DESIGN</h2>
                 </div>
@@ -23,7 +23,7 @@
                 </label>
                 <div id="myNav" class="overlay">
                     <div class="overlay-content">
-                        <a href="#">Inicio</a>
+                        <a href="index.php">Inicio</a>
                         <a href="#">Centro</a>
                         <a href="#">Actividades</a>
                         <a href="#">Contacto📞</a>
@@ -31,11 +31,11 @@
                     </div>
                 </div>
                 <ul id="menu">
-                    <li><a href="aires_acondicionados.html">Inicio</a></li>
-                    <li><a href="calefaccion.html">Centro</a></li>
+                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="">Centro</a></li>
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto📞</a></li>
-                    <li><a href="formulario.html">Log In / Registro👤</a></li>
+                    <li><a href="">Log In / Registro👤</a></li>
                 </ul>
             </nav>
         </header>
@@ -49,7 +49,7 @@
                 </form>
             </div>
 
-            <div class="registro">
+            <div class="contenedor">
                 <h2>Registrarse</h2>
                 <form method="post" action="">
                     <label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" value=""/>
