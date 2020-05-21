@@ -181,54 +181,48 @@ hr{
     border:1px solid lightgreen;
 }
 
-section > h2{
-    width:80%;
-    margin:0 auto 1vh;
-    text-align:center;
-    color:white;
-}
-
-section > #opciones{
+.contenedor{
     display:flex;
-    flex-basis:100%;
+    width:100%;
+    margin:5vh auto;
     flex-flow:column;
     flex-wrap:nowrap;
 }
 
-#opcion{
-    position:relative;
-    border:1px solid lightgreen;
-    margin:1% auto;
-    width:80%;
-}
-
-#opcion > img{
-    width:100%;
-    position:relative;
-    filter:brightness(40%);
-}
-
-#opcion > #textoOpcion{
-    width:100%;
-    height:100%;
-    position:absolute;
-    top:0;
-    left:0;
-    display:flex;
-    flex-basis:100%;
-    flex-wrap:wrap;
-    flex-flow:column;
-}
-
-#textoOpcion > h2{
-    text-align:center;
-    width:80%;
-    margin:auto;
-    margin-bottom:auto;
+.contenedor h2{
     color:white;
-    font-weight:bold;
-    font-size:1.2em;
+    flex-basis:80%;
+    text-align:center;
 }
+
+.contenedor form{
+    display:flex;
+    flex-basis:80%;
+    width:80%;
+    flex-flow:column;
+    flex-wrap:nowrap;
+    border:1px solid lightgreen;
+    margin:1vh auto;
+}
+
+.contenedor form label{
+    color:white;
+    flex-basis:80%;
+    margin:1vh auto;
+}
+
+.contenedor form input{
+    width:80%;
+    align-self:center;
+    margin-bottom:2vh;
+}
+
+.contenedor form textarea{
+    width:80%;
+    align-self:center;
+    margin-bottom:2vh;
+}
+
 
 /*FOOTER*/
 /*Hacemos el footer flexible*/
