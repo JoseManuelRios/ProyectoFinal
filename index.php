@@ -27,7 +27,7 @@
                         <a href="#">Centro</a>
                         <a href="#">Actividades</a>
                         <a href="#">Contacto📞</a>
-                        <a href="#">Log In / Registro👤</a>
+                        <a href="login.php">Log In / Registro👤</a>
                     </div>
                 </div>
                 <ul id="menu">
@@ -35,7 +35,7 @@
                     <li><a href="calefaccion.html">Centro</a></li>
                     <li><a href="#">Actividades</a></li>
                     <li><a href="#">Contacto📞</a></li>
-                    <li><a href="formulario.html">Log In / Registro👤</a></li>
+                    <li><a href="login.php">Log In / Registro👤</a></li>
                 </ul>
             </nav>
             <div id="cabecera">
@@ -65,10 +65,12 @@
                     </div>
                 </div>
                 <div id="opcion">
-                    <img src="Img/registrate.jpeg" alt="registrate" title="registrate"/>
-                    <div id="textoOpcion">
-                        <h2>REGISTRATE</h2>
-                    </div>
+                    <a href="login.php">
+                        <img src="Img/registrate.jpeg" alt="registrate" title="registrate"/>
+                        <div id="textoOpcion">
+                            <h2>REGISTRATE</h2>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
