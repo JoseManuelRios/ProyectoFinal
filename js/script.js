@@ -3,7 +3,7 @@ $(document).ready(function(){
         var height=$(window).scrollTop();
         var width=$(window).width();
         if(width>100){
-            if(height>100) {
+            if(height>150) {
                 $("nav").css({"position": "fixed"});
                 $("nav").css({"opacity":"80%"});
             }else{
