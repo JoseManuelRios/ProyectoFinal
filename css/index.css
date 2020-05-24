@@ -177,7 +177,7 @@ nav div h2{
 /*SECTION*/
 hr{
     width:80%;
-    margin:2vh auto;
+    margin:3vh auto;
     border:1px solid lightgreen;
 }
 
@@ -251,6 +251,10 @@ footer a{
     text-decoration:none;
 }
 
+footer > h3{
+    display:none;
+}
+
 /*Ocultamos la ul contacto*/
 footer #contacto{
     display:none;
@@ -302,7 +306,7 @@ footer #redesSociales li a img{
     }
 
     .overlay{
-        margin-top:8vh;
+        margin-top:9vh;
     }
 
     /*Hacemos flex al div del nav y le decimos que ocupe el 80% colocado en columna*/
@@ -339,6 +343,28 @@ footer #redesSociales li a img{
         margin:0.5vh 0.5vh;
         transition: 0.4s;
         border-radius:5px;
+    }
+
+    #textoCabecera > p{
+        font-size:1.7rem;
+    }
+
+    #textoCabecera > p:nth-child(1){
+        margin-bottom:0;
+        font-size:2rem;
+    }
+
+    /*SECTION*/
+    section > #opciones{
+        display:flex;
+        flex-basis:100%;
+        flex-flow:row;
+        flex-wrap:wrap;
+        justify-content:space-around;
+    }
+
+    #opcion{
+        width:45%;
     }
 
     /*FOOTER*/
@@ -428,5 +454,60 @@ footer #redesSociales li a img{
         color:lightgreen;
         font-weight:bold;
         font-size:1.1em;
+    }
+
+    #cabecera{
+        display:flex;
+        flex-basis:100%;
+        flex-flow:row;
+        flex-wrap:nowrap;
+        margin-bottom:8vh;
+    }
+
+    #cabecera > img{
+        width:40%;
+        top:10%;
+        left:55%;
+        position:relative;
+        filter:brightness(100%);
+        border:1px solid lightgreen;
+    }
+
+    #cabecera > #textoCabecera{
+        width:60%;
+        height:100%;
+        position:absolute;
+        top:0;
+        left:0%;
+        display:flex;
+        flex-basis:100%;
+        flex-wrap:wrap;
+        flex-flow:column;
+    }
+
+    /*SECTION*/
+    section > #opciones{
+        display:flex;
+        flex-basis:100%;
+        flex-flow:row;
+        flex-wrap:nowrap;
+        justify-content:space-around;
+    }
+
+    #opcion{
+        width:30%;
+    }
+
+    /*FOOTER*/
+    footer > h3{
+        displaY:flex;
+        flex-basis:20%;
+        align-self:center;
+        justify-content:center;
+        color:lightgreen;
+    }
+
+    footer > a{
+        flex-basis:10%;
     }
 }
