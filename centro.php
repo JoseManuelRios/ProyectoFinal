@@ -41,13 +41,7 @@
                     <li><a href="login.php">Log In / Registro👤</a></li>
                 </ul>
             </nav>
-            <div id="cabecera">
-                <img src="Img/fondo.jpg" alt="imagen cabecera" title="imagen cabecera"/>
-                <div id="textoCabecera">
-                    <p>SPORT DESIGN</p>
-                    <p>Aqui va el eslogan del centro Aqui va el eslogan del centro Aqui va el eslogan del centro</p>
-                </div>
-            </div>
+            
         </header>
 
         <section>
