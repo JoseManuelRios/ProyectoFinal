@@ -47,8 +47,11 @@
         <section>
             <div id="info">
                 <h2>SPORT DESIGN</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque quos, temporibus vel velit dolore cupiditate incidunt voluptatibus ratione distinctio suscipit odio provident quia aspernatur. Magni nulla aliquid laboriosam ratione exercitationem?</p>
-                <img src="Img/instalaciones.jpg" alt="imagen cabecera" title="imagen cabecera"/>
+                <div id="infoGeneral">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque quos, temporibus vel velit dolore cupiditate incidunt voluptatibus ratione distinctio suscipit odio provident quia aspernatur. Magni nulla aliquid laboriosam ratione exercitationem?</p>
+                    <img src="Img/instalaciones.jpg" alt="imagen cabecera" title="imagen cabecera"/>
+                </div>
+                <img src="Img/mapa.png" alt="mapa" title="mapa"/>
             </div>
 
             <hr/>
