@@ -23,18 +23,18 @@
                 </label>
                 <div id="myNav" class="overlay">
                     <div class="overlay-content">
-                        <a href="#">Inicio</a>
-                        <a href="#">Centro</a>
-                        <a href="#">Actividades</a>
-                        <a href="#">Contacto📞</a>
+                        <a href="index.php">Inicio</a>
+                        <a href="centro.php">Centro</a>
+                        <a href="actividades.php">Actividades</a>
+                        <a href="contacto.php">Contacto📞</a>
                         <a href="login.php">Log In / Registro👤</a>
                     </div>
                 </div>
                 <ul id="menu">
-                    <li><a href="aires_acondicionados.html">Inicio</a></li>
-                    <li><a href="calefaccion.html">Centro</a></li>
-                    <li><a href="#">Actividades</a></li>
-                    <li><a href="#">Contacto📞</a></li>
+                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="centro.php">Centro</a></li>
+                    <li><a href="actividades.php">Actividades</a></li>
+                    <li><a href="contacto.php">Contacto📞</a></li>
                     <li><a href="login.php">Log In / Registro👤</a></li>
                 </ul>
             </nav>
@@ -77,7 +77,8 @@
 
         <footer>
             <img src="Img/icono.svg" id="iconoFooter" alt="icono" title="icono"/>
-            <a href="#" id="linkContacto">Contacto</a>
+            <h3>SPORT DESIGN</h3>
+            <a href="contacto.php" id="linkContacto">Contacto</a>
             <a href="#" id="avisoLegal">Aviso legal</a>
             <ul id="contacto">
                 <li><p>WhatsApp: 654987654</p></li>
