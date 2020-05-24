@@ -41,10 +41,12 @@
         </header>
 
         <section>
-            <h2>Contacto</h2>
-            <p>Ponte en contacto con nosotros si tienes cualquier duda</p>
-
-            <div class="contenedor">
+            <div id="ubicacion">
+                <h2>Contacto</h2>
+                <p>Ponte en contacto con nosotros si tienes cualquier duda</p>
+                <img src="Img/mapa.png" alt="mapa" title="mapa"/>
+            </div>
+            <div id="contenedor">
                 <form method="post" action="">
                     <label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" value=""/>  
                     <label for="apellidos">Apellidos</label><input type="text" id="apellidos" name="apellidos" value=""/> 
