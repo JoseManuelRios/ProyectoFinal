@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>SPORT DESIGN</title>
+        <title>SPORT DESIGN - Log In</title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" type="text/css" href="css/login.css"/>
@@ -24,18 +24,18 @@
                 <div id="myNav" class="overlay">
                     <div class="overlay-content">
                         <a href="index.php">Inicio</a>
-                        <a href="#">Centro</a>
-                        <a href="#">Actividades</a>
-                        <a href="#">Contacto📞</a>
-                        <a href="#">Log In / Registro👤</a>
+                        <a href="centro.php">Centro</a>
+                        <a href="actividades.php">Actividades</a>
+                        <a href="contacto.php">Contacto📞</a>
+                        <a href="login.php">Log In / Registro👤</a>
                     </div>
                 </div>
                 <ul id="menu">
                     <li><a href="index.php">Inicio</a></li>
-                    <li><a href="">Centro</a></li>
-                    <li><a href="#">Actividades</a></li>
-                    <li><a href="#">Contacto📞</a></li>
-                    <li><a href="">Log In / Registro👤</a></li>
+                    <li><a href="centro.php">Centro</a></li>
+                    <li><a href="actividades.php">Actividades</a></li>
+                    <li><a href="contacto.php">Contacto📞</a></li>
+                    <li><a href="login.php">Log In / Registro👤</a></li>
                 </ul>
             </nav>
         </header>
@@ -46,6 +46,7 @@
                 <form method="post" action="">
                     <label for="idUsuario">ID</label><input type="number" id="idUsuario" name="idUsuario" value=""/>
                     <label for="clave">Clave</label><input type="password" id="clave" name="clave"/>
+                    <button type="submit" name="">Entrar</button>
                 </form>
             </div>
 
@@ -61,13 +62,15 @@
                     <label for="direccion">Direccion</label><input type="text" id="direccion" name="direccion"/>
                     <label for="ciudad">Ciudad</label><input type="text" id="ciudad" name="ciudad"/>
                     <label for="observaciones">Observaciones</label><textarea id="observaciones" name="observaciones" rows="7" cols="40"></textarea>
+                    <button type="submit" name="">Registrarse</button>
                 </form>
             </div>
         </section>
 
         <footer>
             <img src="Img/icono.svg" id="iconoFooter" alt="icono" title="icono"/>
-            <a href="#" id="linkContacto">Contacto</a>
+            <h3>SPORT DESIGN</h3>
+            <a href="contacto.php" id="linkContacto">Contacto</a>
             <a href="#" id="avisoLegal">Aviso legal</a>
             <ul id="contacto">
                 <li><p>WhatsApp: 654987654</p></li>
