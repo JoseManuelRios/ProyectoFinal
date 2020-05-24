@@ -197,12 +197,16 @@ div#info{
     color:white;
 }
 
-#info > img{
+#info > div > img{
     border:1px solid lightgreen;
     width:100%;
 }
 
-#info > p{
+#info > img{
+    display:none;
+}
+
+#info > div > p{
     color:white;
     width:100%;
     text-align:center;
@@ -515,6 +519,54 @@ footer #redesSociales li a img{
         font-size:1.1em;
     }
 
+    /*SECTION*/
+    #info{
+        display:flex;
+        flex-basis:100%;
+        flex-flow:row;
+        flex-wrap:wrap;
+    }
+
+    #info h2{
+        flex-basis:80%;
+    }
+
+    #info #infoGeneral{
+        flex-basis:45%;
+    }
+
+    #info > img{
+        display:flex;
+        margin:auto auto 0;
+        flex-basis:45%;
+    }
+
+    #tarifas{
+        display:flex;
+        flex-basis:100%;
+        flex-flow:row;
+        flex-wrap:wrap;
+        justify-content:space-around;
+    }
+
+    .opcion{
+        flex-basis:30%;
+    }
+
+    #instalaciones{
+        display:flex;
+        flex-basis:100%;
+        flex-flow:row;
+        flex-wrap:wrap;
+        justify-content:space-around;
+    }
+
+    .fotoInstalaciones{
+        display:flex;
+        flex-basis:45%;
+        flex-flow:column;
+    }
+    
     /*FOOTER*/
     footer > h3{
         displaY:flex;
