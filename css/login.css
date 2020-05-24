@@ -177,7 +177,7 @@ nav div h2{
 /*SECTION*/
 hr{
     width:80%;
-    margin:2vh auto;
+    margin:3vh auto;
     border:1px solid lightgreen;
 }
 
@@ -223,6 +223,11 @@ hr{
     margin-bottom:2vh;
 }
 
+.contenedor form button{
+    width:35%;
+    margin:1vh auto 2vh;
+}
+
 
 /*FOOTER*/
 /*Hacemos el footer flexible*/
@@ -243,6 +248,10 @@ footer a{
     align-self:center;
     color:lightgreen;
     text-decoration:none;
+}
+
+footer > h3{
+    display:none;
 }
 
 /*Ocultamos la ul contacto*/
@@ -296,7 +305,7 @@ footer #redesSociales li a img{
     }
 
     .overlay{
-        margin-top:8vh;
+        margin-top:9vh;
     }
 
     /*Hacemos flex al div del nav y le decimos que ocupe el 80% colocado en columna*/
@@ -333,6 +342,35 @@ footer #redesSociales li a img{
         margin:0.5vh 0.5vh;
         transition: 0.4s;
         border-radius:5px;
+    }
+
+    /*SECTION*/
+    .contenedor form{
+        display:flex;
+        flex-basis:80%;
+        width:80%;
+        flex-flow:row;
+        flex-wrap:wrap;
+        border:1px solid lightgreen;
+        margin:1vh auto;
+    }
+
+    .contenedor form label{
+        color:white;
+        flex-basis:15%;
+        margin:1vh auto;
+    }
+
+    .contenedor form input{
+        width:80%;
+        align-self:center;
+        margin:1vh auto;
+    }
+
+    .contenedor form textarea{
+        width:80%;
+        align-self:center;
+        margin:1vh auto;
     }
 
     /*FOOTER*/
@@ -422,5 +460,36 @@ footer #redesSociales li a img{
         color:lightgreen;
         font-weight:bold;
         font-size:1.1em;
+    }
+
+    /*SECTION*/
+    section{
+        display:flex;
+        flex-flow:row;
+        flex-wrap:wrap;
+        justify-content:space-around;
+    }
+
+    .contenedor{
+        flex-basis:45%;
+        justify-content:space-around;
+        align-self:flex-start;
+    }
+
+    form input{
+        height:3vh;
+    }
+
+    /*FOOTER*/
+    footer > h3{
+        displaY:flex;
+        flex-basis:20%;
+        align-self:center;
+        justify-content:center;
+        color:lightgreen;
+    }
+
+    footer > a{
+        flex-basis:10%;
     }
 }
