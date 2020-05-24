@@ -477,6 +477,72 @@ footer #redesSociales li a img{
         font-size:1.1em;
     }
 
+    /*SECTION*/
+    section > #actividades{
+        display:flex;
+        flex-basis:100%;
+        flex-flow:row;
+        flex-wrap:wrap;
+        margin-bottom:15vh;
+    }
+
+    section > #actividadesFormacion{
+        display:flex;
+        flex-basis:100%;
+        flex-flow:row;
+        flex-wrap:wrap;
+        margin-bottom:15vh;
+    }
+
+    .opcion{
+        position:relative;
+        margin:0;
+        width:45%;
+        flex-basis:45%;
+    }
+
+    #actividades > .opcion > img{
+        width:40%;
+        top:10%;
+        left:55%;
+        position:relative;
+        filter:brightness(100%);
+        border:1px solid lightgreen;
+    }
+
+    #actividadesFormacion > .opcion > img{
+        width:40%;
+        top:10%;
+        left:55%;
+        position:relative;
+        filter:brightness(100%);
+        border:1px solid lightgreen;
+    }
+
+    .opcion > #textoOpcion{
+        width:60%;
+        height:100%;
+        position:absolute;
+        top:0;
+        left:0%;
+        display:flex;
+        flex-basis:100%;
+        flex-wrap:wrap;
+        flex-flow:column;
+    }
+
+    .opcion > p{
+        width:60%;
+        height:100%;
+        position:absolute;
+        top:60%;
+        left:0%;
+        display:flex;
+        flex-basis:100%;
+        flex-wrap:wrap;
+        flex-flow:column;
+    }
+
     /*FOOTER*/
     footer > h3{
         displaY:flex;
