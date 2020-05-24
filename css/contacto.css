@@ -181,7 +181,13 @@ hr{
     border:1px solid lightgreen;
 }
 
-section > h2{
+section{
+    display:flex;
+    flex-basis:100%;
+    flex-flow:column;
+}
+
+section > #ubicacion h2{
     color:white;
     text-align:center;
     width:80%;
@@ -189,7 +195,11 @@ section > h2{
     margin-top:4vh;
 }
 
-section > p{
+#ubicacion img{
+    display:none;
+}
+
+section > #ubicacion p{
     color:white;
     text-align:center;
     width:80%;
@@ -197,7 +207,7 @@ section > p{
     margin-top:1vh;
 }
 
-.contenedor{
+#contenedor{
     display:flex;
     width:100%;
     margin:3vh auto;
@@ -205,7 +215,7 @@ section > p{
     flex-wrap:nowrap;
 }
 
-.contenedor form{
+#contenedor form{
     display:flex;
     flex-basis:80%;
     width:80%;
@@ -214,19 +224,19 @@ section > p{
     margin:1vh auto;
 }
 
-.contenedor form label{
+#contenedor form label{
     color:white;
     flex-basis:80%;
     margin:1vh auto;
 }
 
-.contenedor form input{
+#contenedor form input{
     width:80%;
     align-self:center;
     margin-bottom:2vh;
 }
 
-.contenedor form textarea{
+#contenedor form textarea{
     width:80%;
     align-self:center;
     margin-bottom:2vh;
@@ -445,6 +455,48 @@ footer #redesSociales li a img{
         color:lightgreen;
         font-weight:bold;
         font-size:1.1em;
+    }
+
+    /*SECTION*/
+    section{
+        display:flex;
+        flex-basis:100%;
+        flex-flow:row;
+        flex-wrap:nowrap;
+        justify-content:space-around;
+    }
+
+    section #ubicacion{
+        display:flex;
+        flex-basis:45%;
+        flex-flow:column;
+        justify-content:space-around;
+    }
+
+    section #ubicacion img{
+        display:flex;
+        width:90%;
+        flex-basis:80%;
+        margin:3vh auto;
+    }
+
+    section #contenedor{
+        display:flex;
+        flex-basis:45%;
+        flex-flow:column;
+    }
+    
+    section #contenedor label{
+        font-size:1.5em;
+    }
+
+    section #contenedor input{
+        height:3vh;
+    }
+
+    section #contenedor button{
+        width:15%;
+        margin-left:75%;
     }
 
     /*FOOTER*/
