@@ -28,13 +28,12 @@ if(isset($_POST["btnRegistro"])){
     $correcto=!$error_nombre && !$error_apellidos && !$error_clave && !$error_telefono && !$error_edad && !$error_correo && !$error_direccion && !$error_ciudad && !$error_tarjeta;
 
     if($correcto){
-        $datosInsertar=Array("nombre"=>$_POST["nombre"],"apellidos"=>$_POST["apellidos"],"clave"=>$_POST["clave"],"telefono"=>$_POST["telefono"],"edad"=>$_POST["edad"],"correo"=>$_POST["correo"],"direccion"=>$_POST["direccion"],"ciudad"=>$_POST["ciudad"],"observaciones"=>$_POST["observaciones"],"tarjeta"=>$_POST["tarjeta"]);
+        $datosInsertar=Array("planPago"=>$_POST["planPago"],"nombre"=>$_POST["nombre"],"apellidos"=>$_POST["apellidos"],"clave"=>$_POST["clave"],"telefono"=>$_POST["telefono"],"edad"=>$_POST["edad"],"correo"=>$_POST["correo"],"direccion"=>$_POST["direccion"],"ciudad"=>$_POST["ciudad"],"observaciones"=>$_POST["observaciones"],"tarjeta"=>$_POST["tarjeta"]);
         $obj=consumir_servicio_REST($enlace."/registroUsuario","POST",$datosInsertar);
 
         if(isset($obj->mensaje_error)){
             die($obj->mensaje_error);
         }else{
-            echo $obj->mensaje;
             $_SESSION["nombre"]=$_POST["usuario"];
         }
     }
@@ -53,17 +52,31 @@ if(isset($_POST["btnRegistro"])){
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="css/header.css" />
     <link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <?php
-    include_once("header.php");
+    include("header.php");
     ?>
     <section>
         <div class="contenedor">
             <div class="contenedor2">
                 <h2>Registrarse</h2>
                 <form method="post" action="registro.php">
+                    <label for="planPago">Plan de pago:</label>
+                    <?php
+                        $obj=consumir_servicio_REST($enlace."/obtenerPlanesPago","GET");
+                        if(isset($obj->mensaje_error)){
+                            die($obj->mensaje_error);
+                        }else{
+                            echo "<select name='planPago' id='planPago'>";
+                                foreach($obj->planesPago as $fila){
+                                    echo "<option value='".$fila->idPlanPago."'>".$fila->nombre." - ".$fila->precio."€</option>";
+                                }
+                            echo "</select>";
+                        }
+                    ?>
                     <label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" value="" />
                     <label for="apellidos">Apellidos</label><input type="text" id="apellidos" name="apellidos" />
                     <label for="clave">Clave</label><input type="password" id="clave" name="clave" />
