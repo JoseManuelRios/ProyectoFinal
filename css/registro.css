@@ -1,0 +1,119 @@
+/*Toda la página*/
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    width:100%;
+    height:100%;
+    background-color:black;
+}
+
+/*SECTION*/
+hr{
+    width:80%;
+    margin:3vh auto;
+    border:1px solid lightgreen;
+}
+
+.contenedor{
+    display:flex;
+    width:100%;
+    margin:5vh auto;
+    flex-flow:column;
+    flex-wrap:nowrap;
+}
+
+.contenedor h2{
+    color:white;
+    flex-basis:80%;
+    text-align:center;
+}
+
+.contenedor form{
+    display:flex;
+    flex-basis:80%;
+    width:80%;
+    flex-flow:column;
+    flex-wrap:nowrap;
+    border:1px solid lightgreen;
+    margin:1vh auto;
+}
+
+.contenedor form label{
+    color:white;
+    flex-basis:80%;
+    margin:1vh auto;
+}
+
+.contenedor form input{
+    width:80%;
+    align-self:center;
+    margin-bottom:2vh;
+}
+
+.contenedor form textarea{
+    width:80%;
+    align-self:center;
+    margin-bottom:2vh;
+}
+
+.contenedor form button{
+    width:35%;
+    margin:1vh auto 2vh;
+}
+
+/*Realizamos la vista de tablets*/
+@media all and (min-width:768px) and (max-width:1000px){
+    /*SECTION*/
+    .contenedor form{
+        display:flex;
+        flex-basis:80%;
+        width:80%;
+        flex-flow:row;
+        flex-wrap:wrap;
+        border:1px solid lightgreen;
+        margin:1vh auto;
+    }
+
+    .contenedor form label{
+        color:white;
+        flex-basis:15%;
+        margin:1vh auto;
+    }
+
+    .contenedor form input{
+        width:80%;
+        align-self:center;
+        margin:1vh auto;
+    }
+
+    .contenedor form textarea{
+        width:80%;
+        align-self:center;
+        margin:1vh auto;
+    }
+}
+
+/*Realizamos la vista de ordenador*/
+@media all and (min-width:1000px){
+    /*SECTION*/
+    section{
+        display:flex;
+        flex-flow:row;
+        flex-wrap:wrap;
+        justify-content:space-around;
+    }
+
+    .contenedor{
+        flex-basis:45%;
+        justify-content:space-around;
+        align-self:flex-start;
+    }
+
+    form input{
+        height:3vh;
+    }
+}
