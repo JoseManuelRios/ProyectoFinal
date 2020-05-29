@@ -74,6 +74,7 @@ nav div{
 /*Ocultamos el h2 que será el nombre de la empresa*/
 nav div h2{
     display:none;
+    font-family:'Orbitron',sans-serif;
 }
 
 /*Hacemos que la barra de busqueda ocupe casi todo el div*/
