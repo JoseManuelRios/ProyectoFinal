@@ -54,6 +54,12 @@ hr{
     margin-bottom:2vh;
 }
 
+.contenedor form select{
+    width:80%;
+    align-self:center;
+    margin-bottom:2vh;
+}
+
 .contenedor form textarea{
     width:80%;
     align-self:center;
