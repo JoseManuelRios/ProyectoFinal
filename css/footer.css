@@ -1,0 +1,88 @@
+/*FOOTER*/
+/*Hacemos el footer flexible*/
+footer{
+    margin-top:5vh;
+    display:flex;
+    flex-basis:100%;
+    flex-flow:row;
+    background-color:#222;
+    border:2px solid black;
+    flex-wrap:wrap;
+}
+
+/*Hacemos que el enlace a contactos ocupe el 45%*/
+footer a{
+    flex-basis:20%;
+    margin:1vh;
+    align-self:center;
+    color:lightgreen;
+    text-decoration:none;
+}
+
+footer > h3{
+    display:none;
+}
+
+/*Ocultamos la ul contacto*/
+footer #contacto{
+    display:none;
+}
+
+footer #iconoFooter{
+    display:flex;
+    height:5vh;
+    margin:1vh;
+    text-align:center;
+    justify-content:center;
+    align-self:center;
+}
+
+/*Hacemos que la ul de las redes sociales ocupe el 45%*/
+footer #redesSociales{
+    display:flex;
+    margin-left:auto;
+    flex-basis:30%;
+    flex-flow:row;
+    flex-wrap:wrap;
+    list-style:none;
+}
+
+/*Colocamos los li en le centro*/
+footer #redesSociales li{
+    align-self:center;
+    margin-right:1vh;
+    margin-top:1vh;
+    margin-bottom:0.5vh;
+}
+
+/*Al primer li le damos margin-left auto para ponerlos todos los li a la derecha*/
+footer #redesSociales li:nth-child(1){
+    margin-left:auto;
+}
+
+/*Le damos una anchura fija a los iconos de las redes sociales*/
+footer #redesSociales li a img{
+    width:3vh;
+}
+
+@media all and (min-width:768px) and (max-width:1000px){
+    /*FOOTER*/
+    footer > a{
+        flex-basis:10%;
+    }
+}
+
+@media all and (min-width:1000px){
+    /*FOOTER*/
+    footer > h3{
+        displaY:flex;
+        flex-basis:20%;
+        align-self:center;
+        justify-content:center;
+        color:lightgreen;
+    }
+
+    footer > a{
+        flex-basis:10%;
+    }
+}
