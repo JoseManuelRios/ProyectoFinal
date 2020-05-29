@@ -13,7 +13,11 @@
     $app->contentType('application/json; charset=utf-8');
 
     $app->post('/registroUsuario',function(){
-        echo json_encode(registrarUsuario($_POST["nombre"],$_POST["apellidos"],md5($_POST["clave"]),$_POST["telefono"],$_POST["edad"],$_POST["correo"],$_POST["direccion"],$_POST["ciudad"],$_POST["observaciones"],md5($_POST["tarjeta"])),JSON_FORCE_OBJECT);
+        echo json_encode(registrarUsuario($_POST["planPago"],$_POST["nombre"],$_POST["apellidos"],md5($_POST["clave"]),$_POST["telefono"],$_POST["edad"],$_POST["correo"],$_POST["direccion"],$_POST["ciudad"],$_POST["observaciones"],md5($_POST["tarjeta"])),JSON_FORCE_OBJECT);
+    });
+
+    $app->get('/obtenerPlanesPago', function (){
+        echo json_encode(obtenerPlanesPago(),JSON_FORCE_OBJECT);
     });
 
     // Definimos las respuesta de la ruta base con un tipo de consulta GET
