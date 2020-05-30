@@ -28,7 +28,7 @@ if(isset($_POST["btnRegistro"])){
     $correcto=!$error_nombre && !$error_apellidos && !$error_clave && !$error_telefono && !$error_edad && !$error_correo && !$error_direccion && !$error_ciudad && !$error_tarjeta;
 
     if($correcto){
-        $datosInsertar=Array("planPago"=>$_POST["planPago"],"nombre"=>$_POST["nombre"],"apellidos"=>$_POST["apellidos"],"clave"=>$_POST["clave"],"telefono"=>$_POST["telefono"],"edad"=>$_POST["edad"],"correo"=>$_POST["correo"],"direccion"=>$_POST["direccion"],"ciudad"=>$_POST["ciudad"],"observaciones"=>$_POST["observaciones"],"tarjeta"=>$_POST["tarjeta"]);
+        $datosInsertar=Array("planPago"=>$_POST["planPago"],"nombre"=>$_POST["nombre"],"apellidos"=>$_POST["apellidos"],"clave"=>md5($_POST["clave"]),"telefono"=>$_POST["telefono"],"edad"=>$_POST["edad"],"correo"=>$_POST["correo"],"direccion"=>$_POST["direccion"],"ciudad"=>$_POST["ciudad"],"observaciones"=>$_POST["observaciones"],"tarjeta"=>md5($_POST["tarjeta"]));
         $obj=consumir_servicio_REST($enlace."/registroUsuario","POST",$datosInsertar);
 
         if(isset($obj->mensaje_error)){
@@ -37,6 +37,11 @@ if(isset($_POST["btnRegistro"])){
             $_SESSION["nombre"]=$_POST["usuario"];
         }
     }
+}
+
+if(isset($_POST["btnVolver"])){
+    header("Location:login.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -88,6 +93,7 @@ if(isset($_POST["btnRegistro"])){
                     <label for="tarjeta">Nº Tarjeta: </label><input type="text" id="tarjeta" name="tarjeta" />
                     <label for="observaciones">Observaciones</label><textarea id="observaciones" name="observaciones" rows="7" cols="40"></textarea>
                     <button type="submit" name="btnRegistro">Registrarse</button>
+                    <button type="submit" name="btnVolver">Volver</button>
                 </form>
             </div>
         </div>
