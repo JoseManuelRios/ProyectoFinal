@@ -53,23 +53,17 @@
         }else{
             mysqli_set_charset($con,"utf8");
             $consulta="SELECT * FROM clientes WHERE idCliente='".$id."' and clave='".$clave."'";
-            
+
             if($resultado=mysqli_query($con,$consulta)){
 
                 if(mysqli_num_rows($resultado)>0){
-                    $cliente=$resultado;
+                    return array("cliente"=>mysqli_fetch_assoc($resultado));
                 }else{
-                    $mensaje="Usuario no registrado. Introduce unos datos correctos";
-                    mysqli_close($con);
-                    return array("mensaje"=>$mensaje);
+                    return array("mensaje"=>"Login incorrecto. Introduce los datos correctos");
                 }
 
-                mysqli_free_result($resultado);
-                mysqli_close($con);
-                return array("cliente"=>$cliente);
-
             }else{
-                $mensaje="Imposible conectar. Error número ".mysqli_errno($con).":".mysqli_error($con);
+                $mensaje="Imposible realizar la consulta. Error número ".mysqli_errno($con).":".mysqli_error($con);
                 mysqli_close($con);
                 return array("mensaje_error"=>$mensaje);
             }
