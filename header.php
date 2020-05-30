@@ -29,7 +29,13 @@
             <li><a href="centro.php">Centro</a></li>
             <li><a href="actividades.php">Actividades</a></li>
             <li><a href="contacto.php">Contacto</a></li>
-            <li><a href="login.php">Log In / Registro</a></li>
+            <li><?php
+                    if(isset($_SESSION["nombre"])){
+                        echo "<a href='login.php'>Bienvenido ".$_SESSION["nombre"]."</a>";
+                    }else{
+                        echo "<a href='login.php'>Log In / Registro</a>";
+                    }
+                ?></li>
         </ul>
     </nav>
 </header>
