@@ -19,6 +19,13 @@
     include_once("header.php");
     ?>
     <section>
+        <div id="cabecera">
+            <img src="Img/fondo.jpg" alt="imagen cabecera" title="imagen cabecera" />
+            <div id="textoCabecera">
+                <p>SPORT DESIGN</p>
+                <p>Aqui va el eslogan del centro Aqui va el eslogan del centro Aqui va el eslogan del centro</p>
+            </div>
+        </div>
         <hr />
         <h2>Ven a conocernos</h2>
 
