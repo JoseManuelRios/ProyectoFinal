@@ -34,7 +34,7 @@ if(isset($_POST["btnRegistro"])){
         if(isset($obj->mensaje_error)){
             die($obj->mensaje_error);
         }else{
-            $_SESSION["nombre"]=$_POST["usuario"];
+            $_SESSION["nombre"]=$_POST["nombre"];
         }
     }
 }
