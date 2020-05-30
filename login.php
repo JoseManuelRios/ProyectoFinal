@@ -3,6 +3,35 @@
     session_start();
 
     include("consumir_servicio.php");
+
+    if(isset($_POST["btnIrRegistro"])){
+        header("Location:registro.php");
+        exit;
+    }
+
+    $error_id=true;
+    $error_clave=true;
+    if(isset($_POST["btnLogin"])){
+        $error_id=$_POST["idCliente"]=="" || !is_numeric($_POST["idCliente"]);
+        $error_clave=$_POST["clave"]=="";
+
+        $correcto=!$error_id && !$error_clave;
+
+        if($correcto){
+            $datosLogin=Array("idCliente"=>$_POST["idCliente"],"clave"=>md5($_POST["clave"]));
+            $obj=consumir_servicio_REST($enlace."/login","POST",$datosLogin);
+
+            if(isset($obj->mensaje_error)){
+                die($obj->mensaje_error);
+            }elseif(isset($obj->mensaje)){
+               
+            }else{
+                $_SESSION["nombre"]=$obj->cliente->nombre;
+                header("Location:index.php");
+                exit;
+            }
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,9 +58,10 @@
             <div class="contenedor2">
                 <h2>Log In</h2>
                 <form method="post" action="login.php">
-                    <label for="idUsuario">ID</label><input type="number" id="idUsuario" name="idUsuario" value="" />
+                    <label for="idUsuario">ID</label><input type="number" id="idCliente" name="idCliente" value="" />
                     <label for="clave">Clave</label><input type="password" id="clave" name="clave" />
                     <button type="submit" name="btnLogin">Entrar</button>
+                    <button type="submit" name="btnIrRegistro">Registrarse</button>
                 </form>
             </div>
         </div>
