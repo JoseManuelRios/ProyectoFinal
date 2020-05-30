@@ -1,3 +1,9 @@
+<?php
+session_name("gimnasio");
+session_start();
+
+include("consumir_servicio.php");
+?>
 <!DOCTYPE html>
 <html>
 
