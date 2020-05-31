@@ -22,7 +22,6 @@
                     echo "<a href='login.php'>Log In / Registro</a>";
                 }
 
-                echo $_SESSION["tipo"];
                 if(isset($_SESSION["tipo"]) && $_SESSION["tipo"]=="admin"){
                     echo "<a href='admin.php'>Administrar</a>";
                 }
