@@ -3,6 +3,12 @@ session_name("gimnasio");
 session_start();
 
 include("consumir_servicio.php");
+
+if (isset($_POST["btnCerrarSesion"])) {
+    session_destroy();
+    header("Location:index.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,7 +55,7 @@ include("consumir_servicio.php");
                 </div>
             </div>
             <div id="opcion">
-                <a href="login.php">
+                <a href="registro.php">
                     <img src="Img/registrate.jpeg" alt="registrate" title="registrate" />
                     <div id="textoOpcion">
                         <h2>REGISTRATE</h2>
