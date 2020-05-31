@@ -70,6 +70,33 @@
         }
     }
 
+    function obtenerTabla($tabla){
+        $con=conectar();
+        if(!$con){
+            return array("mensaje_error"=>"Imposible conectar. Error número ".mysqli_connect_errno().":".mysqli_connect_error());
+        }else{
+            mysqli_set_charset($con,"utf8");
+            $consulta="SELECT * FROM ".$tabla;
+            
+            if($resultado=mysqli_query($con,$consulta)){
+
+                $tabla=Array();
+                while($fila=mysqli_fetch_assoc($resultado)){
+                    $tabla[]=$fila;
+                }
+
+                mysqli_free_result($resultado);
+                mysqli_close($con);
+                return array("tabla"=>$tabla);
+
+            }else{
+                $mensaje="Imposible conectar. Error número ".mysqli_errno($con).":".mysqli_error($con);
+                mysqli_close($con);
+                return array("mensaje_error"=>$mensaje);
+            }
+        }
+    }
+
     /*function obtener_productos(){
         $con=conectar();
         if(!$con){
