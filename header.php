@@ -16,12 +16,18 @@
                 <a href="actividades.php">Actividades</a>
                 <a href="contacto.php">Contacto</a>
                 <?php
-                    if(isset($_SESSION["nombre"])){
-                        echo "<a href='login.php'>Bienvenido ".$_SESSION["nombre"]."</a>";
-                    }else{
-                        echo "<a href='login.php'>Log In / Registro</a>";
-                    }
+                if (isset($_SESSION["nombre"])) {
+                    echo "<a href='login.php'>" . $_SESSION["nombre"] . " - </a><form method='post' action='index.php'><button type='submit' name='btnCerrarSesion'>Cerrar sesión</button></form>";
+                } else {
+                    echo "<a href='login.php'>Log In / Registro</a>";
+                }
+
+                echo $_SESSION["tipo"];
+                if(isset($_SESSION["tipo"]) && $_SESSION["tipo"]=="admin"){
+                    echo "<a href='admin.php'>Administrar</a>";
+                }
                 ?>
+
             </div>
         </div>
         <ul id="menu">
@@ -30,12 +36,17 @@
             <li><a href="actividades.php">Actividades</a></li>
             <li><a href="contacto.php">Contacto</a></li>
             <li><?php
-                    if(isset($_SESSION["nombre"])){
-                        echo "<a href='login.php'>Bienvenido ".$_SESSION["nombre"]."</a>";
-                    }else{
-                        echo "<a href='login.php'>Log In / Registro</a>";
-                    }
+                if (isset($_SESSION["nombre"])) {
+                    echo "<a href='login.php'>" . $_SESSION["nombre"] . " - </a><form method='post' action='index.php'><button type='submit' name='btnCerrarSesion' >Cerrar sesión</button></form>";
+                } else {
+                    echo "<a href='login.php'>Log In / Registro</a>";
+                }
                 ?></li>
+            <?php
+                if(isset($_SESSION["tipo"]) && $_SESSION["tipo"]=="admin"){
+                    echo "<li><a href='admin.php'>Administrar</a></li>";
+                }
+            ?>
         </ul>
     </nav>
 </header>
