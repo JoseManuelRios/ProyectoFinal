@@ -27,8 +27,31 @@ include("consumir_servicio.php");
     <section>
         <h2>Actividades</h2>
 
+        <?php
+        $obj = consumir_servicio_REST($enlace . "/obtenerTabla/actividades", "GET");
+
+        if (isset($obj->mensaje_error)) {
+            die($obj->mensaje_error);
+        } else {
+            $actividades=$obj;
+        }
+        ?>
+
         <div id="actividades">
-            <div class="opcion">
+            <?php
+            foreach($actividades->tabla as $fila){
+                if($fila->formacion=="no"){
+                    echo "<div class='opcion'>";
+                        echo "<img src='Img/instalaciones.jpg' alt='instalaciones' title='instalaciones' />";
+                        echo "<div class='textoOpcion'>";
+                            echo "<h3>".$fila->nombre."</h3>";
+                        echo "</div>";
+                        echo "<p>".$fila->descripcion."</p>";
+                    echo "</div>";
+                }
+            }
+            ?>
+            <!--<div class="opcion">
                 <img src="Img/instalaciones.jpg" alt="instalaciones" title="instalaciones" />
                 <div id="textoOpcion">
                     <h3>Nombre de la actividad</h3>
@@ -47,23 +70,26 @@ include("consumir_servicio.php");
                         Dia: 00:00, 00:00</p>
                 </div>
                 <p>Descripcion de la actividad</p>
-            </div>
+            </div>-->
         </div>
 
         <hr />
 
         <h2>Actividades de formación</h2>
         <div id="actividadesFormacion">
-            <div class="opcion">
-                <img src="Img/registrate.jpeg" alt="registrate" title="registrate" />
-                <div id="textoOpcion">
-                    <h3>Nombre de la actividad</h3>
-                    <p>Dia: 00:00, 00:00<br />
-                        Dia: 00:00, 00:00<br />
-                        Dia: 00:00, 00:00</p>
-                </div>
-                <p>Descripcion de la actividad</p>
-            </div>
+        <?php
+            foreach($actividades->tabla as $fila){
+                if($fila->formacion=="si"){
+                    echo "<div class='opcion'>";
+                        echo "<img src='Img/instalaciones.jpg' alt='instalaciones' title='instalaciones' />";
+                        echo "<div class='textoOpcion'>";
+                            echo "<h3>".$fila->nombre."</h3>";
+                        echo "</div>";
+                        echo "<p>".$fila->descripcion."</p>";
+                    echo "</div>";
+                }
+            }
+            ?>
         </div>
     </section>
     <?php
