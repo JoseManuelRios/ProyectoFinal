@@ -27,7 +27,7 @@
                
             }else{
                 $_SESSION["nombre"]=$obj->cliente->nombre;
-                $_SESSION["tipo"]=$obj->cliente->tipo;
+                $_SESSION["tipo"]=$obj->cliente->tipoUsuario;
                 header("Location:index.php");
                 exit;
             }
