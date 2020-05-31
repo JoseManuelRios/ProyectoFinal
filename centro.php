@@ -40,7 +40,25 @@ include("consumir_servicio.php");
 
         <div id="tarifas">
             <h2>Tarifas</h2>
-            <div class="opcion">
+            <?php
+                $obj=consumir_servicio_REST($enlace."/obtenerTabla/planpago","GET");
+
+                if(isset($obj->mensaje_error)){
+                    die($obj->mensaje_error);
+                }else{
+                    foreach($obj->tabla as $fila){
+                        echo "<div class='opcion'>";
+                            echo "<img src='Img/instalaciones.jpg' alt='instalaciones' title='instalaciones' />";
+                            echo "<div class='textoOpcion'>";
+                                echo "<h2>Plan de pago - ".$fila->nombre."</h2>";
+                                echo "<br/>";
+                                echo "<h2>".$fila->precio."€</h2>";
+                            echo "</div>";
+                        echo "</div>";
+                    }
+                }
+            ?>
+            <!--<div class="opcion">
                 <img src="Img/instalaciones.jpg" alt="instalaciones" title="instalaciones" />
                 <div class="textoOpcion">
                     <h2>Plan de pago *</h2>
@@ -56,7 +74,7 @@ include("consumir_servicio.php");
                     <h2>* €</h2>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <hr />
 
