@@ -24,6 +24,10 @@
         echo json_encode(login($_POST["idCliente"],$_POST["clave"]),JSON_FORCE_OBJECT);
     });
 
+    $app->get('/obtenerTabla/:tabla',function($tabla){
+        echo json_encode(obtenerTabla($tabla),JSON_FORCE_OBJECT);
+    });
+
     // Definimos las respuesta de la ruta base con un tipo de consulta GET
     /*$app->get('/productos', function ()
         {
