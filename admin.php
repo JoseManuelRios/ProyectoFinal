@@ -3,6 +3,12 @@ session_name("gimnasio");
 session_start();
 
 include("consumir_servicio.php");
+
+if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
+    session_destroy();
+    header("Location:index.php");
+    exit;
+}else{
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +33,29 @@ include("consumir_servicio.php");
     ?>
 
     <section>
-        
+        <h1>Admin</h1>
+    
+        <?php
+        $obj=consumir_servicio_REST($enlace."/obtenerTablas","GET");
+
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);
+        }else{
+            echo "<form method='post' action='admin.php' name='formulario'>";
+                echo "<select name='nombreTabla' onchange='document.formulario.submit()'>";
+                foreach($obj->tablas as $fila){
+                    if(isset($_POST["nombreTabla"]) && $_POST["nombreTabla"]==$fila->Tables_in_bd_gimnasio){
+                        echo "<option value='".$fila->Tables_in_bd_gimnasio."' selected>".$fila->Tables_in_bd_gimnasio."</option>";
+                    }else{
+                        echo "<option value='".$fila->Tables_in_bd_gimnasio."'>".$fila->Tables_in_bd_gimnasio."</option>";
+                    }
+                }
+                echo "</select>";
+            echo "</form>";
+        }
+        ?>
+
+
     </section>
 
     <?php
@@ -35,3 +63,6 @@ include("consumir_servicio.php");
     ?>
 </body>
 </html>
+<?php
+}
+?>
