@@ -28,6 +28,10 @@
         echo json_encode(obtenerTabla($tabla),JSON_FORCE_OBJECT);
     });
 
+    $app->get('/obtenerTablas',function(){
+        echo json_encode(obtenerTablas(),JSON_FORCE_OBJECT);
+    });
+
     // Definimos las respuesta de la ruta base con un tipo de consulta GET
     /*$app->get('/productos', function ()
         {
