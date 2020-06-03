@@ -39,12 +39,38 @@ include("consumir_servicio.php");
 
         <div id="actividades">
             <?php
+            $obj=consumir_servicio_REST($enlace."/obtenerTabla/clases","GET");
+
+            if (isset($obj->mensaje_error)) {
+                die($obj->mensaje_error);
+            } else {
+                $clases=$obj;
+            }
+
             foreach($actividades->tabla as $fila){
                 if($fila->formacion=="no"){
                     echo "<div class='opcion'>";
                         echo "<img src='Img/instalaciones.jpg' alt='instalaciones' title='instalaciones' />";
                         echo "<div class='textoOpcion'>";
                             echo "<h3>".$fila->nombre."</h3>";
+                            echo "<p>";
+                            $dias=array();
+                            foreach($clases->tabla as $fila2){
+                                if($fila->idActividad == $fila2->idActividad){
+                                    $encontrado=false;
+                                    if(!empty($dias)){
+                                        foreach($dias as $dia){
+                                            if($fila2->fecha == $dia){
+                                                $encontrado=true;
+                                            }
+                                        }
+                                    }
+                                    if(!$encontrado){
+                                        echo $fila2->fecha;
+                                    }
+                                }
+                            }
+                            echo "</p>";
                         echo "</div>";
                         echo "<p>".$fila->descripcion."</p>";
                     echo "</div>";
