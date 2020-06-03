@@ -43,16 +43,20 @@ if (isset($_POST["btnCerrarSesion"])) {
 
         <div id="opciones">
             <div id="opcion">
-                <img src="Img/instalaciones.jpg" alt="instalaciones" title="instalaciones" />
-                <div id="textoOpcion">
-                    <h2>INSTALACIONES</h2>
-                </div>
+                <a href="centro.php">
+                    <img src="Img/instalaciones.jpg" alt="instalaciones" title="instalaciones" />
+                    <div id="textoOpcion">
+                        <h2>INSTALACIONES</h2>
+                    </div>
+                </a>
             </div>
             <div id="opcion">
-                <img src="Img/actividades.jpg" alt="actividades" title="actividades" />
-                <div id="textoOpcion">
-                    <h2>ACTIVIDADES</h2>
-                </div>
+                <a href="actividades.php">
+                    <img src="Img/actividades.jpg" alt="actividades" title="actividades" />
+                    <div id="textoOpcion">
+                        <h2>ACTIVIDADES</h2>
+                    </div>
+                </a>
             </div>
             <div id="opcion">
                 <a href="registro.php">
