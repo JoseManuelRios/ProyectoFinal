@@ -89,10 +89,22 @@ nav div h2{
     display:none;
 }
 
+#menu li{
+    height:100%;
+    text-align:center;
+    vertical-align:center;
+}
+
+#login{
+    background-color:#DDD;
+    color:black;
+}
+
 /*Estilos del menú a desplegar*/
 .overlay {
     margin-top:10vh;
     width:0vh;
+    height:100%;
     position:fixed;
     z-index:1;
     top:0;
@@ -106,6 +118,7 @@ nav div h2{
     position: relative;
     width: 100%;
     text-align: center;
+    background-color:grey;
   }
   
   .overlay a {
@@ -289,6 +302,7 @@ nav div h2{
     /*Hacemos que cada li ocupe el 20%*/
     #menu li{
         flex-basis:20%;
+        display:flex;
         text-align:center;
         align-self:center;
         justify-content:space-around;
@@ -301,6 +315,16 @@ nav div h2{
         color:lightgreen;
         font-weight:bold;
         font-size:1.1em;
+    }
+
+    #menu li:hover{
+        background-color:lawngreen;
+        transition:0.5s;
+    }
+
+    #menu li:hover a{
+        color:black;
+        transition:0.5s;
     }
 
     #cabecera{
