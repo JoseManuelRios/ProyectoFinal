@@ -11,22 +11,21 @@
         </label>
         <div id="myNav" class="overlay">
             <div class="overlay-content">
-                <a href="index.php">Inicio</a>
-                <a href="centro.php">Centro</a>
-                <a href="actividades.php">Actividades</a>
-                <a href="contacto.php">Contacto</a>
-                <?php
+            <?php
                 if (isset($_SESSION["nombre"])) {
-                    echo "<a href='login.php'>" . $_SESSION["nombre"] . " - </a><form method='post' action='index.php'><button type='submit' name='btnCerrarSesion'>Cerrar sesión</button></form>";
+                    echo "<a href='login.php' id='login'>" . $_SESSION["nombre"] . " - </a><form method='post' action='index.php'><button type='submit' name='btnCerrarSesion'>Cerrar sesión</button></form>";
                 } else {
-                    echo "<a href='login.php'>Log In / Registro</a>";
+                    echo "<a href='login.php' id='login'>Log In / Registro</a>";
                 }
 
                 if(isset($_SESSION["tipo"]) && $_SESSION["tipo"]=="admin"){
                     echo "<a href='admin.php'>Administrar</a>";
                 }
                 ?>
-
+                <a href="index.php">Inicio</a>
+                <a href="centro.php">Centro</a>
+                <a href="actividades.php">Actividades</a>
+                <a href="contacto.php">Contacto</a>
             </div>
         </div>
         <ul id="menu">
