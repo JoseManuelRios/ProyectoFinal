@@ -55,7 +55,23 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
         }
         ?>
 
+        <?php
+        if(isset($_POST["nombreTabla"])){
+            $_SESSION["nombreTabla"]=$_POST["nombreTabla"];
+        }else{
+            $_SESSION["nombreTabla"]="actividades";
+        }
 
+        $obj=consumir_servicio_REST($enlace."/obtenerTabla/".$_SESSION["nombreTabla"],"GET");
+
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);
+        }else{
+            echo "<table>";
+                echo "Mostramos la tabla ".$_SESSION["nombreTabla"];
+            echo "</table>";
+        }
+        ?>
     </section>
 
     <?php
