@@ -41,7 +41,7 @@ include("consumir_servicio.php");
         <div id="tarifas">
             <h2>Tarifas</h2>
             <?php
-                $obj=consumir_servicio_REST($enlace."/obtenerTabla/planpago","GET");
+                $obj=consumir_servicio_REST($enlace."/obtenerTabla/jmra_planpago","GET");
 
                 if(isset($obj->mensaje_error)){
                     die($obj->mensaje_error);
