@@ -96,11 +96,6 @@ nav div h2{
     vertical-align:middle;
 }
 
-#login{
-    background-color:#DDD;
-    color:black;
-}
-
 /*Estilos del menú a desplegar*/
 .overlay {
     margin-top:10vh;
@@ -132,6 +127,15 @@ nav div h2{
     transition: 0.3s;
     border:1px solid black;
   }
+
+  #login{
+    background-color:#DDD;
+    color:black;
+    display:flex;
+    flex-flow:row;
+    flex-wrap:nowrap;
+    justify-content:center;
+    }
   
   .overlay a:hover, .overlay a:focus {
     color: white;
@@ -319,7 +323,7 @@ nav div h2{
         font-weight:bold;
         font-size:1.1em;
         text-align:center;
-        padding:10% 0;
+        padding:15% 0;
     }
 
     #menu a:hover li{
@@ -327,6 +331,15 @@ nav div h2{
         color:black;
         transition:0.5s;
     }
+
+    #login{
+        background-color:#222;
+        color:lightgreen;
+        display:flex;
+        flex-flow:row;
+        flex-wrap:nowrap;
+        justify-content:center;
+        }
 
     #cabecera{
         display:flex;
