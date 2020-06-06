@@ -32,6 +32,10 @@
         echo json_encode(obtenerTablas(),JSON_FORCE_OBJECT);
     });
 
+    $app->get('/obtenerActividad/:id',function($id){
+        echo json_encode(obtenerActividad($id),JSON_FORCE_OBJECT);
+    });
+
     // Definimos las respuesta de la ruta base con un tipo de consulta GET
     /*$app->get('/productos', function ()
         {
