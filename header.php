@@ -12,37 +12,37 @@
         <div id="myNav" class="overlay">
             <div class="overlay-content">
             <?php
-                if (isset($_SESSION["nombre"])) {
-                    echo "<a href='login.php' id='login'>" . $_SESSION["nombre"] . " - </a><form method='post' action='index.php'><button type='submit' name='btnCerrarSesion'>Cerrar sesión</button></form>";
+                if (isset($_SESSION["idCliente"])) {
+                    echo "<a href='login.php' id='login'>ID " . $_SESSION["idCliente"] . " - </a><form method='post' action='index.php'><button type='submit' name='btnCerrarSesion'>Cerrar sesión</button></form>";
                 } else {
-                    echo "<a href='login.php' id='login'>Log In / Registro</a>";
+                    echo "<a href='login.php' id='login'>LOG IN / REGISTRO</a>";
                 }
 
                 if(isset($_SESSION["tipo"]) && $_SESSION["tipo"]=="admin"){
-                    echo "<a href='admin.php'>Administrar</a>";
+                    echo "<a href='admin.php'>ADMINISTRAR</a>";
                 }
                 ?>
-                <a href="index.php">Inicio</a>
-                <a href="centro.php">Centro</a>
-                <a href="actividades.php">Actividades</a>
-                <a href="contacto.php">Contacto</a>
+                <a href="index.php">INICIO</a>
+                <a href="centro.php">CENTRO</a>
+                <a href="actividades.php">ACTIVIDADES</a>
+                <a href="contacto.php">CONTACTO</a>
             </div>
         </div>
         <ul id="menu">
-            <li><a href="index.php">Inicio</a></li>
-            <li><a href="centro.php">Centro</a></li>
-            <li><a href="actividades.php">Actividades</a></li>
-            <li><a href="contacto.php">Contacto</a></li>
-            <li><?php
-                if (isset($_SESSION["nombre"])) {
-                    echo "<a href='login.php'>" . $_SESSION["nombre"] . " - </a><form method='post' action='index.php'><button type='submit' name='btnCerrarSesion' >Cerrar sesión</button></form>";
+            <a href="index.php"><li>INICIO</li></a>
+            <a href="centro.php"><li>CENTRO</li></a>
+            <a href="actividades.php"><li>ACTIVIDADES</li></a>
+            <a href="contacto.php"><li>CONTACTO</li></a>
+            <?php
+                if (isset($_SESSION["idCliente"])) {
+                    echo "<a href=''><li>ID " . $_SESSION["idCliente"] . " - <form method='post' action='index.php'><button type='submit' name='btnCerrarSesion' >Cerrar sesión</button></form></li></a>";
                 } else {
-                    echo "<a href='login.php'>Log In / Registro</a>";
+                    echo "<a href='login.php'><li>LOG IN / REGISTRO</li></a>";
                 }
-                ?></li>
+                ?>
             <?php
                 if(isset($_SESSION["tipo"]) && $_SESSION["tipo"]=="admin"){
-                    echo "<li><a href='admin.php'>Administrar</a></li>";
+                    echo "<a href='admin.php'><li>ADMINISTRAR</li></a>";
                 }
             ?>
         </ul>
