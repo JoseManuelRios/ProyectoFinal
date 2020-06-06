@@ -43,7 +43,7 @@ if(isset($_POST["btnRegistro"])){
         if(isset($obj->mensaje_error)){
             die($obj->mensaje_error);
         }else{
-            $_SESSION["nombre"]=$_POST["nombre"];
+            $_SESSION["idCliente"]=$obj->mensaje;
             $_SESSION["tipo"]="normal";
         }
     }
@@ -89,6 +89,7 @@ if(isset($_POST["btnVolver"])){
                     <label for="ciudad">Ciudad</label><input type="text" id="ciudad" name="ciudad" />
                     <label for="tarjeta">Nº Tarjeta: </label><input type="text" id="tarjeta" name="tarjeta" />
                     <label for="observaciones">Observaciones</label><textarea id="observaciones" name="observaciones" rows="7" cols="40"></textarea>
+                    <input type="checkbox" id="terminos" name="terminos" value="terminos" required/><label for="terminos">Acepto los terminos y condiciones</label>
                     <button type="submit" name="btnRegistro">Registrarse</button>
                     <button type="submit" name="btnVolver">Volver</button>
                 </form>
