@@ -45,6 +45,8 @@ if(isset($_POST["btnRegistro"])){
         }else{
             $_SESSION["idCliente"]=$obj->mensaje;
             $_SESSION["tipo"]="normal";
+            header("Location:index.php");
+            exit;
         }
     }
 }
