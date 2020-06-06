@@ -13,7 +13,7 @@
             <div class="overlay-content">
             <?php
                 if (isset($_SESSION["idCliente"])) {
-                    echo "<a href='login.php' id='login'>ID " . $_SESSION["idCliente"] . " - </a><form method='post' action='index.php'><button type='submit' name='btnCerrarSesion'>Cerrar sesión</button></form>";
+                    echo "<a href='login.php' id='login'>ID " . $_SESSION["idCliente"] . " - <form method='post' action='index.php'><button type='submit' name='btnCerrarSesion'>Cerrar sesión</button></form></a>";
                 } else {
                     echo "<a href='login.php' id='login'>LOG IN / REGISTRO</a>";
                 }
@@ -34,15 +34,15 @@
             <a href="actividades.php"><li>ACTIVIDADES</li></a>
             <a href="contacto.php"><li>CONTACTO</li></a>
             <?php
-                if (isset($_SESSION["idCliente"])) {
-                    echo "<a href=''><li>ID " . $_SESSION["idCliente"] . " - <form method='post' action='index.php'><button type='submit' name='btnCerrarSesion' >Cerrar sesión</button></form></li></a>";
-                } else {
-                    echo "<a href='login.php'><li>LOG IN / REGISTRO</li></a>";
-                }
-                ?>
-            <?php
                 if(isset($_SESSION["tipo"]) && $_SESSION["tipo"]=="admin"){
                     echo "<a href='admin.php'><li>ADMINISTRAR</li></a>";
+                }
+            ?>
+            <?php
+                if (isset($_SESSION["idCliente"])) {
+                    echo "<a href=''><li id='login'>ID " . $_SESSION["idCliente"] . " - <form method='post' action='index.php'><button type='submit' name='btnCerrarSesion' >Cerrar sesión</button></form></li></a>";
+                } else {
+                    echo "<a href='login.php'><li id=''>LOG IN / REGISTRO</li></a>";
                 }
             ?>
         </ul>
