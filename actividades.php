@@ -28,7 +28,7 @@ include("consumir_servicio.php");
         <h2>Actividades</h2>
 
         <?php
-        $obj = consumir_servicio_REST($enlace . "/obtenerTabla/actividades", "GET");
+        $obj = consumir_servicio_REST($enlace . "/obtenerTabla/jmra_actividades", "GET");
 
         if (isset($obj->mensaje_error)) {
             die($obj->mensaje_error);
@@ -39,7 +39,7 @@ include("consumir_servicio.php");
 
         <div id="actividades">
             <?php
-            $obj = consumir_servicio_REST($enlace . "/obtenerTabla/clases", "GET");
+            $obj = consumir_servicio_REST($enlace . "/obtenerTabla/jmra_clases", "GET");
 
             if (isset($obj->mensaje_error)) {
                 die($obj->mensaje_error);
@@ -53,6 +53,7 @@ include("consumir_servicio.php");
                     echo "<img src='Img/instalaciones.jpg' alt='instalaciones' title='instalaciones' />";
                     echo "<div class='textoOpcion'>";
                     echo "<h3>" . $fila->nombre . "</h3>";
+                    echo "<form method='post' action='actividades.php'>";
                     echo "<p>";
                     $dias = array();
                     foreach ($clases->tabla as $fila2) {
@@ -74,7 +75,7 @@ include("consumir_servicio.php");
                             }
                         }
                     }
-                    //var_dump($dias);
+                    
                     $dias2 = array_keys($dias);
                     foreach ($dias2 as $dia) {
                         $fecha = explode("-", $dia);
@@ -85,7 +86,9 @@ include("consumir_servicio.php");
                         }
                         echo "<br/>";
                     }
+                    
                     echo "</p>";
+                    echo "</form>";
                     echo "</div>";
                     echo "<p>" . $fila->descripcion . "</p>";
                     echo "</div>";
