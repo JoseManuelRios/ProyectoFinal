@@ -36,8 +36,8 @@ hr{
     display:flex;
     flex-basis:80%;
     width:80%;
-    flex-flow:column;
-    flex-wrap:nowrap;
+    flex-flow:row;
+    flex-wrap:wrap;
     border:1px solid lightgreen;
     margin:1vh auto;
 }
