@@ -10,7 +10,9 @@
             $consulta="INSERT into clientes(idPlanPago,nombre,apellidos,clave,telefono,edad,correo,direccion,ciudad,observaciones,tarjeta) values('".$planPago."','".$nombre."','".$apellidos."','".$clave."','".$telefono."','".$edad."','".$correo."','".$direccion."','".$ciudad."','".$observaciones."','".$tarjeta."')";
 
             if($resultado=mysqli_query($con,$consulta)){
-                $mensaje="Usuario insertado con éxito";
+                $id=mysqli_insert_id($con);
+                $mensaje=$id;
+                return array("mensaje"=>$mensaje);
             }else{ 
                 $mensaje="Imposible conectar. Error número ".mysqli_errno($con).":".mysqli_error($con);
                 mysqli_close($con);
@@ -25,7 +27,7 @@
             return array("mensaje_error"=>"Imposible conectar. Error número ".mysqli_connect_errno().":".mysqli_connect_error());
         }else{
             mysqli_set_charset($con,"utf8");
-            $consulta="SELECT * FROM planpago";
+            $consulta="SELECT * FROM jmra_planpago";
             
             if($resultado=mysqli_query($con,$consulta)){
 
@@ -52,7 +54,7 @@
             return array("mensaje_error"=>"Imposible conectar. Error número ".mysqli_connect_errno().":".mysqli_connect_error());
         }else{
             mysqli_set_charset($con,"utf8");
-            $consulta="SELECT * FROM clientes WHERE idCliente='".$id."' and clave='".$clave."'";
+            $consulta="SELECT * FROM jmra_clientes WHERE idCliente='".$id."' and clave='".$clave."'";
 
             if($resultado=mysqli_query($con,$consulta)){
 
@@ -76,7 +78,7 @@
             return array("mensaje_error"=>"Imposible conectar. Error número ".mysqli_connect_errno().":".mysqli_connect_error());
         }else{
             mysqli_set_charset($con,"utf8");
-            $consulta="SELECT * FROM ".$tabla;
+            $consulta="SELECT * FROM jmra_".$tabla;
             
             if($resultado=mysqli_query($con,$consulta)){
 
