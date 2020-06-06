@@ -9,6 +9,7 @@
 /*Le damos un width de 100% a la cabecera para que ocupe todo el ancho de la pantalla*/
 #cabecera{
     position:relative;
+    
 }
 
 #cabecera > img{
@@ -92,7 +93,7 @@ nav div h2{
 #menu li{
     height:100%;
     text-align:center;
-    vertical-align:center;
+    vertical-align:middle;
 }
 
 #login{
@@ -300,29 +301,29 @@ nav div h2{
     }
 
     /*Hacemos que cada li ocupe el 20%*/
-    #menu li{
+    #menu a{
         flex-basis:20%;
+        height:100%;
         display:flex;
         text-align:center;
         align-self:center;
         justify-content:space-around;
+        text-decoration:none;
     }
 
     /*Le quitamos la decoración al texto del enlace*/
-    #menu li a{
+    #menu a li{
         align-self:center;
-        text-decoration:none;
+        width:100%;
         color:lightgreen;
         font-weight:bold;
         font-size:1.1em;
+        text-align:center;
+        padding:10% 0;
     }
 
-    #menu li:hover{
+    #menu a:hover li{
         background-color:lawngreen;
-        transition:0.5s;
-    }
-
-    #menu li:hover a{
         color:black;
         transition:0.5s;
     }
@@ -333,6 +334,7 @@ nav div h2{
         flex-flow:row;
         flex-wrap:nowrap;
         margin-bottom:8vh;
+        margin-top:2vh;
     }
 
     #cabecera > img{
