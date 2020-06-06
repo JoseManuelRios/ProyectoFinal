@@ -26,7 +26,7 @@
             }elseif(isset($obj->mensaje)){
                
             }else{
-                $_SESSION["nombre"]=$obj->cliente->nombre;
+                $_SESSION["idCliente"]=$obj->cliente->idCliente;
                 $_SESSION["tipo"]=$obj->cliente->tipoUsuario;
                 header("Location:index.php");
                 exit;
