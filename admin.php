@@ -18,7 +18,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
     <title>SPORT DESIGN</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="css/" />
+    <link rel="stylesheet" type="text/css" href="css/admin.css" />
     <!-- Iconos diseñados por <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</a> -->
     <script type='text/javascript' src='jq/jquery-3.1.1.min.js'></script>
     <script type="text/javascript" src="js/script.js"></script>
@@ -59,7 +59,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
         if(isset($_POST["nombreTabla"])){
             $_SESSION["nombreTabla"]=$_POST["nombreTabla"];
         }else{
-            $_SESSION["nombreTabla"]="actividades";
+            $_SESSION["nombreTabla"]="jmra_actividades";
         }
 
         $obj=consumir_servicio_REST($enlace."/obtenerTabla/".$_SESSION["nombreTabla"],"GET");
@@ -67,10 +67,67 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
         if(isset($obj->mensaje_error)){
             die($obj->mensaje_error);
         }else{
-            echo "<table>";
-                echo "Mostramos la tabla ".$_SESSION["nombreTabla"];
-            echo "</table>";
+            echo "<div id='tabla'>";
+                foreach($obj->tabla as $fila){
+                    echo "<div id='id'>";
+                        if($_SESSION["nombreTabla"]=="jmra_actividades"){
+                            echo $fila->idActividad;
+                        }
+                    echo "</div>";
+
+                    echo "<div id='nombre'>";
+                        if($_SESSION["nombreTabla"]=="jmra_actividades"){
+                            echo $fila->nombre;
+                        }
+                    echo "</div>";
+
+                    echo "<div id='opciones'>";
+                        if($_SESSION["nombreTabla"]=="jmra_actividades"){
+                            echo "<form method='post' action='admin.php'><button type='submit' name='btnBorrarActividad'>Borrar</button><button type='submit' name='btnEditarActividad'>Editar</button></form>";
+                        }
+                    echo "</div>";
+                }
+            echo "</div>";
         }
+        ?>
+
+        <?php
+            if($_SESSION["nombreTabla"]=="jmra_actividades"){
+                if(isset($_POST["btnEditarActividad"])){
+                    $obj2=consumir_servicio_REST($enlace."","GET");
+        ?>
+            <div class='formulario'>
+                <form method='post' action='admin.php'>
+                    <label for='nombre'>Nombre</label><input type='input' id='nombre' name='nombre' value='<?php echo $fila->nombre;?>'/>
+                    <label for='descripcion'>Descripción</label><textarea id="descripcion" name="descripcion" rows="7" cols="40"></textarea>
+                    <div>
+                        Aforo máximo: <label for="si">Sí</label><input type="radio" id="si" name="maximo" value="si"/> <label for="no">No</label><input type="radio" id="no" name="maximo" value="no"/>
+                    </div>
+                    <label for="aforo">Aforo máximo (en caso de tenerlo):</label><input type="number" id="aforo" name="aforo" value=''/>
+                    <div>
+                        Formación: <label for="si">Sí</label><input type="radio" id="si" name="formacion" value="si"/> <label for="no">No</label><input type="radio" id="no" name="formacion" value="no"/>
+                    </div>
+                </form>
+            </div>
+        <?php
+                }else{
+        ?>
+            <div class='formulario'>
+                <form method='post' action='admin.php'>
+                    <label for='nombre'>Nombre</label><input type='input' id='nombre' name='nombre' value=''/>
+                    <label for='descripcion'>Descripción</label><textarea id="descripcion" name="descripcion" rows="7" cols="40"></textarea>
+                    <div>
+                        Aforo máximo: <label for="si">Sí</label><input type="radio" id="si" name="maximo" value="si"/> <label for="no">No</label><input type="radio" id="no" name="maximo" value="no"/>
+                    </div>
+                    <label for="aforo">Aforo máximo (en caso de tenerlo):</label><input type="number" id="aforo" name="aforo" value=''/>
+                    <div>
+                        Formación: <label for="si">Sí</label><input type="radio" id="si" name="formacion" value="si"/> <label for="no">No</label><input type="radio" id="no" name="formacion" value="no"/>
+                    </div>
+                </form>
+            </div>
+        <?php
+                }
+            }
         ?>
     </section>
 
