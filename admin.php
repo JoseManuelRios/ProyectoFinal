@@ -83,7 +83,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
 
                     echo "<div id='opciones'>";
                         if($_SESSION["nombreTabla"]=="jmra_actividades"){
-                            echo "<form method='post' action='admin.php'><button type='submit' name='btnBorrarActividad'>Borrar</button><button type='submit' name='btnEditarActividad'>Editar</button></form>";
+                            echo "<form method='post' action='admin.php'><button type='submit' name='btnBorrarActividad' value='".$fila->idActividad."'>Borrar</button><button type='submit' name='btnEditarActividad' value='".$fila->idActividad."'>Editar</button></form>";
                         }
                     echo "</div>";
                 }
@@ -94,18 +94,23 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
         <?php
             if($_SESSION["nombreTabla"]=="jmra_actividades"){
                 if(isset($_POST["btnEditarActividad"])){
-                    $obj2=consumir_servicio_REST($enlace."","GET");
+                    $obj2=consumir_servicio_REST($enlace."/obtenerActividad/".$_POST["btnEditarActividad"],"GET");
+                    if(isset($obj->mensaje_error)){
+                        die($obj->mensaje_error);
+                    }else{
+                        $actividad=$obj2->actividad;
+                    }
         ?>
             <div class='formulario'>
                 <form method='post' action='admin.php'>
-                    <label for='nombre'>Nombre</label><input type='input' id='nombre' name='nombre' value='<?php echo $fila->nombre;?>'/>
-                    <label for='descripcion'>Descripción</label><textarea id="descripcion" name="descripcion" rows="7" cols="40"></textarea>
+                    <label for='nombre'>Nombre</label><input type='input' id='nombre' name='nombre' value='<?php echo $actividad->nombre;?>'/>
+                    <label for='descripcion'>Descripción</label><textarea id="descripcion" name="descripcion" rows="7" cols="40"><?php echo $actividad->descripcion;?></textarea>
                     <div>
-                        Aforo máximo: <label for="si">Sí</label><input type="radio" id="si" name="maximo" value="si"/> <label for="no">No</label><input type="radio" id="no" name="maximo" value="no"/>
+                        Aforo máximo: <label for="si">Sí</label><input type="radio" id="si" name="maximo" value="si" <?php if($actividad->maximo=="si"){echo "checked";}?>/> <label for="no">No</label><input type="radio" id="no" name="maximo" value="no" <?php if($actividad->maximo=="no"){echo "checked";}?>/>
                     </div>
-                    <label for="aforo">Aforo máximo (en caso de tenerlo):</label><input type="number" id="aforo" name="aforo" value=''/>
+                    <label for="aforo">Aforo máximo (en caso de tenerlo):</label><input type="number" id="aforo" name="aforo" value='<?php echo $actividad->aforo;?>'/>
                     <div>
-                        Formación: <label for="si">Sí</label><input type="radio" id="si" name="formacion" value="si"/> <label for="no">No</label><input type="radio" id="no" name="formacion" value="no"/>
+                        Formación: <label for="si">Sí</label><input type="radio" id="si" name="formacion" value="si" <?php if($actividad->formacion=="si"){echo "checked";}?>/> <label for="no">No</label><input type="radio" id="no" name="formacion" value="no" <?php if($actividad->formacion=="no"){echo "checked";}?>/>
                     </div>
                 </form>
             </div>
