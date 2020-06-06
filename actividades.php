@@ -33,85 +33,113 @@ include("consumir_servicio.php");
         if (isset($obj->mensaje_error)) {
             die($obj->mensaje_error);
         } else {
-            $actividades=$obj;
+            $actividades = $obj;
         }
         ?>
 
         <div id="actividades">
             <?php
-            $obj=consumir_servicio_REST($enlace."/obtenerTabla/clases","GET");
+            $obj = consumir_servicio_REST($enlace . "/obtenerTabla/clases", "GET");
 
             if (isset($obj->mensaje_error)) {
                 die($obj->mensaje_error);
             } else {
-                $clases=$obj;
+                $clases = $obj;
             }
 
-            foreach($actividades->tabla as $fila){
-                if($fila->formacion=="no"){
+            foreach ($actividades->tabla as $fila) {
+                if ($fila->formacion == "no") {
                     echo "<div class='opcion'>";
-                        echo "<img src='Img/instalaciones.jpg' alt='instalaciones' title='instalaciones' />";
-                        echo "<div class='textoOpcion'>";
-                            echo "<h3>".$fila->nombre."</h3>";
-                            echo "<p>";
-                            $dias=array();
-                            foreach($clases->tabla as $fila2){
-                                if($fila->idActividad == $fila2->idActividad){
-                                    $encontrado=false;
-                                    if(!empty($dias)){
-                                        foreach($dias as $dia){
-                                            if($fila2->fecha == $dia){
-                                                $encontrado=true;
-                                            }
-                                        }
-                                    }
-                                    if(!$encontrado){
-                                        echo $fila2->fecha;
+                    echo "<img src='Img/instalaciones.jpg' alt='instalaciones' title='instalaciones' />";
+                    echo "<div class='textoOpcion'>";
+                    echo "<h3>" . $fila->nombre . "</h3>";
+                    echo "<p>";
+                    $dias = array();
+                    foreach ($clases->tabla as $fila2) {
+                        if ($fila->idActividad == $fila2->idActividad && $fila2->info == "si") {
+                            $encontrado = false;
+                            if (!empty($dias)) {
+                                foreach ($dias as $dia) {
+                                    if (array_key_exists($fila2->fecha, $dias)) {
+                                        $encontrado = true;
+                                        array_push($dias[$fila2->fecha], $fila2->hora);
+                                        break;
                                     }
                                 }
                             }
-                            echo "</p>";
-                        echo "</div>";
-                        echo "<p>".$fila->descripcion."</p>";
+                            if (!$encontrado) {
+                                $horas = array($fila2->hora);
+                                $dias2 = array($fila2->fecha => $horas);
+                                $dias = array_merge($dias, $dias2);
+                            }
+                        }
+                    }
+                    //var_dump($dias);
+                    $dias2 = array_keys($dias);
+                    foreach ($dias2 as $dia) {
+                        $fecha = explode("-", $dia);
+                        echo $fecha[2] . "-" . $fecha[1] . ": ";
+                        foreach ($dias[$dia] as $hora) {
+                            $tiempo = explode(":", $hora);
+                            echo $tiempo[0] . ":" . $tiempo[1] . " - ";
+                        }
+                        echo "<br/>";
+                    }
+                    echo "</p>";
+                    echo "</div>";
+                    echo "<p>" . $fila->descripcion . "</p>";
                     echo "</div>";
                 }
             }
             ?>
-            <!--<div class="opcion">
-                <img src="Img/instalaciones.jpg" alt="instalaciones" title="instalaciones" />
-                <div id="textoOpcion">
-                    <h3>Nombre de la actividad</h3>
-                    <p>Dia: 00:00, 00:00<br />
-                        Dia: 00:00, 00:00<br />
-                        Dia: 00:00, 00:00</p>
-                </div>
-                <p>Descripcion de la actividad</p>
-            </div>
-            <div class="opcion">
-                <img src="Img/actividades.jpg" alt="actividades" title="actividades" />
-                <div id="textoOpcion">
-                    <h3>Nombre de la actividad</h3>
-                    <p>Dia: 00:00, 00:00<br />
-                        Dia: 00:00, 00:00<br />
-                        Dia: 00:00, 00:00</p>
-                </div>
-                <p>Descripcion de la actividad</p>
-            </div>-->
         </div>
 
         <hr />
 
         <h2>Actividades de formación</h2>
         <div id="actividadesFormacion">
-        <?php
-            foreach($actividades->tabla as $fila){
-                if($fila->formacion=="si"){
+            <?php
+            foreach ($actividades->tabla as $fila) {
+                if ($fila->formacion == "si") {
                     echo "<div class='opcion'>";
-                        echo "<img src='Img/instalaciones.jpg' alt='instalaciones' title='instalaciones' />";
-                        echo "<div class='textoOpcion'>";
-                            echo "<h3>".$fila->nombre."</h3>";
-                        echo "</div>";
-                        echo "<p>".$fila->descripcion."</p>";
+                    echo "<img src='Img/instalaciones.jpg' alt='instalaciones' title='instalaciones' />";
+                    echo "<div class='textoOpcion'>";
+                    echo "<h3>" . $fila->nombre . "</h3>";
+                    echo "<p>";
+                    $dias = array();
+                    foreach ($clases->tabla as $fila2) {
+                        if ($fila->idActividad == $fila2->idActividad && $fila2->info == "si") {
+                            $encontrado = false;
+                            if (!empty($dias)) {
+                                foreach ($dias as $dia) {
+                                    if (array_key_exists($fila2->fecha, $dias)) {
+                                        $encontrado = true;
+                                        array_push($dias[$fila2->fecha], $fila2->hora);
+                                        break;
+                                    }
+                                }
+                            }
+                            if (!$encontrado) {
+                                $horas = array($fila2->hora);
+                                $dias2 = array($fila2->fecha => $horas);
+                                $dias = array_merge($dias, $dias2);
+                            }
+                        }
+                    }
+                    //var_dump($dias);
+                    $dias2 = array_keys($dias);
+                    foreach ($dias2 as $dia) {
+                        $fecha = explode("-", $dia);
+                        echo $fecha[2] . "-" . $fecha[1] . ": ";
+                        foreach ($dias[$dia] as $hora) {
+                            $tiempo = explode(":", $hora);
+                            echo $tiempo[0] . ":" . $tiempo[1] . " - ";
+                        }
+                        echo "<br/>";
+                    }
+                    echo "</p>";
+                    echo "</div>";
+                    echo "<p>" . $fila->descripcion . "</p>";
                     echo "</div>";
                 }
             }
