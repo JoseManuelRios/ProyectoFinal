@@ -50,11 +50,12 @@ include("consumir_servicio.php");
             foreach ($actividades->tabla as $fila) {
                 if ($fila->formacion == "no") {
                     echo "<div class='opcion'>";
-                    echo "<img src='Img/instalaciones.jpg' alt='instalaciones' title='instalaciones' />";
+                    echo "<img src='Img/".$fila->foto."' alt='instalaciones' title='instalaciones' />";
                     echo "<div class='textoOpcion'>";
                     echo "<h3>" . $fila->nombre . "</h3>";
                     echo "<form method='post' action='actividades.php'>";
                     echo "<p>";
+                    echo "<input type='hidden' id='btnActividad' name='btnActividad' value='".$fila->idActividad."'/>";
                     $dias = array();
                     foreach ($clases->tabla as $fila2) {
                         if ($fila->idActividad == $fila2->idActividad && $fila2->info == "si") {
@@ -82,7 +83,7 @@ include("consumir_servicio.php");
                         echo $fecha[2] . "-" . $fecha[1] . ": ";
                         foreach ($dias[$dia] as $hora) {
                             $tiempo = explode(":", $hora);
-                            echo $tiempo[0] . ":" . $tiempo[1] . " - ";
+                            echo "<button type='submit' id='fechaHora' name='fechaHora' value='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."'>".$tiempo[0] . ":" . $tiempo[1] . "</button> - ";
                         }
                         echo "<br/>";
                     }
@@ -105,7 +106,7 @@ include("consumir_servicio.php");
             foreach ($actividades->tabla as $fila) {
                 if ($fila->formacion == "si") {
                     echo "<div class='opcion'>";
-                    echo "<img src='Img/instalaciones.jpg' alt='instalaciones' title='instalaciones' />";
+                    echo "<img src='Img/".$fila->foto."' alt='instalaciones' title='instalaciones' />";
                     echo "<div class='textoOpcion'>";
                     echo "<h3>" . $fila->nombre . "</h3>";
                     echo "<p>";
