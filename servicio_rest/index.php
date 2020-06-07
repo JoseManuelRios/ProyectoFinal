@@ -40,6 +40,10 @@
         echo json_encode(aniadirActividad($_POST["nombre"],$_POST["descripcion"],$_POST["maximo"],$_POST["aforo"],$_POST["formacion"]),JSON_FORCE_OBJECT);
     });
 
+    $app->delete('/borrarActividad/:id', function ($id){
+        echo json_encode(borrarActividad($id),JSON_FORCE_OBJECT);
+    });
+
     // Definimos las respuesta de la ruta base con un tipo de consulta GET
     /*$app->get('/productos', function ()
         {
