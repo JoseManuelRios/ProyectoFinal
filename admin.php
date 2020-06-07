@@ -11,7 +11,15 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
 }else{
 
     if(isset($_POST["btnAgregarActividad"])){
-
+        $datosInsertar=array("nombre"=>$_POST["nombre"],"descripcion"=>$_POST["descripcion"],"maximo"=>$_POST["maximo"],"aforo"=>$_POST["aforo"],"formacion"=>$_POST["formacion"]);
+        var_dump($datosInsertar);
+        $obj=consumir_servicio_REST($enlace."/aniadirActividad","POST",$datosInsertar);
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);
+        }else{
+            header("Location:admin.php");
+            exit;
+        }
     }
 
     if(isset($_POST["btnContEditarActividad"])){
@@ -19,7 +27,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
     }
 
     if(isset($_POST["btnBorrarActividad"])){
-
+        
     }
 ?>
 
@@ -95,7 +103,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
 
                     echo "<div id='opciones'>";
                         if($_SESSION["nombreTabla"]=="jmra_actividades"){
-                            echo "<form method='post' action='admin.php'><button type='submit' name='btnBorrarActividad' value='".$fila->idActividad."'>Borrar</button><button type='submit' name='btnEditarActividad' value='".$fila->idActividad."'>Editar</button></form>";
+                            echo "<form method='post' action='admin.php'><button type='submit' name='btnBorrarActividad' value='".$fila->idActividad."' onclick='return confirm(\"¿Estás seguro que deseas borrar la actividad con ID: ".$fila->idActividad."?\");'>Borrar</button><button type='submit' name='btnEditarActividad' value='".$fila->idActividad."'>Editar</button></form>";
                         }
                     echo "</div>";
                 }
