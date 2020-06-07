@@ -44,6 +44,11 @@
         echo json_encode(borrarActividad($id),JSON_FORCE_OBJECT);
     });
 
+    $app->put('/actualizarActividad/:id', function ($id) use ($app){
+        $datos=$app->request->put();
+        echo json_encode(actualizarActividad($id,$datos["nombre"],$datos["descripcion"],$datos["maximo"],$datos["aforo"],$datos["formacion"]),JSON_FORCE_OBJECT);
+    });
+
     // Definimos las respuesta de la ruta base con un tipo de consulta GET
     /*$app->get('/productos', function ()
         {
