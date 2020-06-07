@@ -37,7 +37,7 @@
     });
 
     $app->post('/aniadirActividad',function(){
-        echo json_encode(aniadirActividad($_POST["nombre"],$_POST["descripcion"],$_POST["maximo"],$_POST["aforo"],$_POST["formacion"]),JSON_FORCE_OBJECT);
+        echo json_encode(aniadirActividad($_POST["nombre"],$_POST["descripcion"],$_POST["maximo"],$_POST["aforo"],$_POST["formacion"],$_POST["foto"]),JSON_FORCE_OBJECT);
     });
 
     $app->delete('/borrarActividad/:id', function ($id){
