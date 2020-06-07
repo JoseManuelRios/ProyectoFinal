@@ -9,6 +9,18 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
     header("Location:index.php");
     exit;
 }else{
+
+    if(isset($_POST["btnAgregarActividad"])){
+
+    }
+
+    if(isset($_POST["btnContEditarActividad"])){
+
+    }
+
+    if(isset($_POST["btnBorrarActividad"])){
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -93,8 +105,12 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
 
         <?php
             if($_SESSION["nombreTabla"]=="jmra_actividades"){
-                if(isset($_POST["btnEditarActividad"])){
-                    $obj2=consumir_servicio_REST($enlace."/obtenerActividad/".$_POST["btnEditarActividad"],"GET");
+                if(isset($_POST["btnEditarActividad"]) || isset($_POST["btnContEditarActividad"])){
+                    if(isset($_POST["btnEditarActividad"])){
+                        $obj2=consumir_servicio_REST($enlace."/obtenerActividad/".$_POST["btnEditarActividad"],"GET");
+                    }else{
+                        $obj2=consumir_servicio_REST($enlace."/obtenerActividad/".$_POST["btnContEditarActividad"],"GET");
+                    }
                     if(isset($obj->mensaje_error)){
                         die($obj->mensaje_error);
                     }else{
@@ -102,32 +118,116 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
                     }
         ?>
             <div class='formulario'>
+            <h2>Editar actividad</h2>
                 <form method='post' action='admin.php'>
-                    <label for='nombre'>Nombre</label><input type='input' id='nombre' name='nombre' value='<?php echo $actividad->nombre;?>'/>
-                    <label for='descripcion'>Descripción</label><textarea id="descripcion" name="descripcion" rows="7" cols="40"><?php echo $actividad->descripcion;?></textarea>
+                    <label for='nombre'>Nombre</label><input type='input' id='nombre' name='nombre' value='<?php
+                        if(isset($_POST["btnContEditarActividad"])){
+                            echo $_POST["nombre"];
+                        }else{
+                            echo $actividad->nombre;
+                        }
+                    ?>' required/>
+                    <label for='descripcion'>Descripción</label><textarea id="descripcion" name="descripcion" rows="7" cols="40"><?php
+                        if(isset($_POST["btnContEditarActividad"])){
+                            echo $_POST["descripcion"];
+                        }else{ 
+                            echo $actividad->descripcion;
+                        }
+                    ?></textarea>
                     <div>
-                        Aforo máximo: <label for="si">Sí</label><input type="radio" id="si" name="maximo" value="si" <?php if($actividad->maximo=="si"){echo "checked";}?>/> <label for="no">No</label><input type="radio" id="no" name="maximo" value="no" <?php if($actividad->maximo=="no"){echo "checked";}?>/>
+                        Aforo máximo: <label for="si">Sí</label><input type="radio" id="si" name="maximo" value="si" <?php 
+                            if(isset($_POST["btnContEditarActividad"])){
+                                if($_POST["maximo"]=="si"){
+                                    echo "checked";
+                                }
+                            }else{
+                                if($actividad->maximo=="si"){echo "checked";}
+                            }
+                        ?>/> 
+                        <label for="no">No</label><input type="radio" id="no" name="maximo" value="no" <?php 
+                        if(isset($_POST["btnContEditarActividad"])){
+                            if($_POST["maximo"]=="no"){
+                                echo "checked";
+                            }
+                        }else{
+                            if($actividad->maximo=="no"){echo "checked";}
+                        }
+                        ?>/>
                     </div>
-                    <label for="aforo">Aforo máximo (en caso de tenerlo):</label><input type="number" id="aforo" name="aforo" value='<?php echo $actividad->aforo;?>'/>
+                    <label for="aforo">Aforo máximo (en caso de tenerlo):</label><input type="number" id="aforo" name="aforo" value='<?php 
+                        if(isset($_POST["btnContEditarActividad"])){
+                            echo $_POST["aforo"];
+                        }else{
+                            echo $actividad->aforo;
+                        }
+                    ?>'/>
                     <div>
-                        Formación: <label for="si">Sí</label><input type="radio" id="si" name="formacion" value="si" <?php if($actividad->formacion=="si"){echo "checked";}?>/> <label for="no">No</label><input type="radio" id="no" name="formacion" value="no" <?php if($actividad->formacion=="no"){echo "checked";}?>/>
+                        Formación: <label for="si">Sí</label><input type="radio" id="si" name="formacion" value="si" <?php 
+                            if(isset($_POST["btnContEditarActividad"])){
+                                if($_POST["formacion"]=="si"){
+                                    echo "checked";
+                                }
+                            }else{
+                                if($actividad->formacion=="si"){echo "checked";}
+                            }
+                        ?>/> 
+                        <label for="no">No</label><input type="radio" id="no" name="formacion" value="no" <?php 
+                            if(isset($_POST["btnContEditarActividad"])){
+                                if($_POST["formacion"]=="no"){
+                                    echo "checked";
+                                }
+                            }else{
+                                if($actividad->formacion=="no"){echo "checked";}
+                            }
+                        ?>/>
                     </div>
+                    <button type="input" id="btnContEditarActividad" name="btnContEditarActividad" value="btnEditarActividad">Editar</button>
                 </form>
             </div>
         <?php
                 }else{
         ?>
             <div class='formulario'>
+            <h2>Añadir actividad</h2>
                 <form method='post' action='admin.php'>
-                    <label for='nombre'>Nombre</label><input type='input' id='nombre' name='nombre' value=''/>
-                    <label for='descripcion'>Descripción</label><textarea id="descripcion" name="descripcion" rows="7" cols="40"></textarea>
+                    <label for='nombre'>Nombre</label><input type='input' id='nombre' name='nombre' value='<?php
+                        if(isset($_POST["btnAgregarActividad"])){
+                            echo $_POST["nombre"];
+                        }
+                    ?>' required/>
+                    <label for='descripcion'>Descripción</label><textarea id="descripcion" name="descripcion" rows="7" cols="40" required><?php
+                        if(isset($_POST["btnAgregarActividad"])){
+                            echo $_POST["descripcion"];
+                        }
+                    ?></textarea>
                     <div>
-                        Aforo máximo: <label for="si">Sí</label><input type="radio" id="si" name="maximo" value="si"/> <label for="no">No</label><input type="radio" id="no" name="maximo" value="no"/>
+                        Aforo máximo: <label for="si">Sí</label><input type="radio" id="si" name="maximo" value="si" <?php
+                            if(!isset($_POST["btnAgregarActividad"]) || isset($_POST["maximo"]) && $_POST["maximo"]=="si"){
+                                echo "checked";
+                            }
+                        ?>/> <label for="no">No</label><input type="radio" id="no" name="maximo" value="no"<?php
+                            if(isset($_POST["maximo"]) && $_POST["maximo"]=="no"){
+                                echo "checked";
+                            }
+                        ?>/>
                     </div>
-                    <label for="aforo">Aforo máximo (en caso de tenerlo):</label><input type="number" id="aforo" name="aforo" value=''/>
+                    <label for="aforo">Aforo máximo (en caso de tenerlo):</label><input type="number" id="aforo" name="aforo" value='<?php
+                        if(isset($_POST["btnAgregarActividad"])){
+                            echo $_POST["aforo"];
+                        }
+                    ?>'/>
                     <div>
-                        Formación: <label for="si">Sí</label><input type="radio" id="si" name="formacion" value="si"/> <label for="no">No</label><input type="radio" id="no" name="formacion" value="no"/>
+                        Formación: <label for="si">Sí</label><input type="radio" id="si" name="formacion" value="si" <?php
+                            if(!isset($_POST["btnAgregarActividad"]) || isset($_POST["formacion"]) && $_POST["formacion"]=="si"){
+                                echo "checked";
+                            }
+                        ?>/> <label for="no">No</label><input type="radio" id="no" name="formacion" value="no" <?php
+                        if(isset($_POST["formacion"]) && $_POST["formacion"]=="no"){
+                            echo "checked";
+                        }
+                    ?>/>
                     </div>
+                    <button type="input" id="btnAgregarActividad" name="btnAgregarActividad">Agregar</button>
                 </form>
             </div>
         <?php
