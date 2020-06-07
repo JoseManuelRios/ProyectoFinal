@@ -25,22 +25,30 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
                 if($_FILES["foto"]["name"]!=""){
                     move_uploaded_file($_FILES["foto"]["tmp_name"],"Img/".$obj->mensaje);
                 }
-                /*header("Location:admin.php");
-                exit;*/
+                header("Location:admin.php");
+                exit;
             }
         }
     }
 
     if(isset($_POST["btnContEditarActividad"])){
         $error_foto=$_FILES["foto"]["name"]!="" && ($_FILES["foto"]["size"]>500000 || !getimagesize($_FILES["foto"]["tmp_name"]));
-        
-        $datosActualizar=array("nombre"=>$_POST["nombre"],"descripcion"=>$_POST["descripcion"],"maximo"=>$_POST["maximo"],"aforo"=>$_POST["aforo"],"formacion"=>$_POST["formacion"]);
-        $obj=consumir_servicio_REST($enlace."/actualizarActividad/".$_POST["btnContEditarActividad"],"PUT",$datosActualizar);
-        if(isset($obj->mensaje_error)){
-            die($obj->mensaje_error);
-        }else{
-            header("Location:admin.php");
-            exit;
+
+        $correcto=!$error_foto;
+        if($correcto){
+            $datosActualizar=array("nombre"=>$_POST["nombre"],"descripcion"=>$_POST["descripcion"],"maximo"=>$_POST["maximo"],"aforo"=>$_POST["aforo"],"formacion"=>$_POST["formacion"],"foto"=>$_FILES["foto"]["name"]);
+            $obj=consumir_servicio_REST($enlace."/actualizarActividad/".$_POST["btnContEditarActividad"],"PUT",$datosActualizar);
+            if(isset($obj->mensaje_error)){
+                die($obj->mensaje_error);
+            }else{
+                if($_FILES["foto"]["name"]!=""){
+                    $array=explode(".",$_FILES["foto"]["name"]);
+					$extension=end($array);
+                    move_uploaded_file($_FILES["foto"]["tmp_name"],"Img/actividad".$_POST["btnContEditarActividad"].".".$extension);
+                }
+                header("Location:admin.php");
+                exit;
+            }
         }
     }
 
