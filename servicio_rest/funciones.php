@@ -150,16 +150,25 @@
         }
     }
 
-    function aniadirActividad($nombre,$descripcion,$maximo,$aforo,$formacion){
+    function aniadirActividad($nombre,$descripcion,$maximo,$aforo,$formacion,$foto){
         $con=conectar();
         if(!$con){
             return array("mensaje_error"=>"Imposible conectar. Error número ".mysqli_connect_errno().":".mysqli_connect_error());
         }else{
             mysqli_set_charset($con,"utf8");
             $consulta="INSERT into jmra_actividades(nombre,descripcion,maximo,aforo,formacion) values('".$nombre."','".$descripcion."','".$maximo."','".$aforo."','".$formacion."')";
-
             if($resultado=mysqli_query($con,$consulta)){
-                $id=mysqli_insert_id($con);
+                if($foto!=""){
+					$array=explode(".",$foto);
+					$extension=end($array);
+                    $consulta="UPDATE jmra_actividades set foto='actividad".mysqli_insert_id($con).".".$extension."' where idActividad='".mysqli_insert_id($con)."'";
+                    $mensaje="actividad".mysqli_insert_id($con).".".$extension;
+					if($resultado2=mysqli_query($con,$consulta)){
+                        return array("mensaje"=>$mensaje);
+					}else{
+						echo "<p>No se pudo subir una imagen</p>";
+					}
+				}
                 $mensaje="Actividad introducida correctamente";
                 return array("mensaje"=>$mensaje);
             }else{ 
