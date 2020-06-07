@@ -10,18 +10,30 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
     exit;
 }else{
 
+    $error_foto=true;
     if(isset($_POST["btnAgregarActividad"])){
-        $datosInsertar=array("nombre"=>$_POST["nombre"],"descripcion"=>$_POST["descripcion"],"maximo"=>$_POST["maximo"],"aforo"=>$_POST["aforo"],"formacion"=>$_POST["formacion"]);
-        $obj=consumir_servicio_REST($enlace."/aniadirActividad","POST",$datosInsertar);
-        if(isset($obj->mensaje_error)){
-            die($obj->mensaje_error);
-        }else{
-            header("Location:admin.php");
-            exit;
+        $error_foto=$_FILES["foto"]["name"]!="" && ($_FILES["foto"]["size"]>500000 || !getimagesize($_FILES["foto"]["tmp_name"]));
+
+        $correcto=!$error_foto;
+        if($correcto){
+            $datosInsertar=array("nombre"=>$_POST["nombre"],"descripcion"=>$_POST["descripcion"],"maximo"=>$_POST["maximo"],"aforo"=>$_POST["aforo"],"formacion"=>$_POST["formacion"],"foto"=>$_FILES["foto"]["name"]);
+            $obj=consumir_servicio_REST($enlace."/aniadirActividad","POST",$datosInsertar);
+            if(isset($obj->mensaje_error)){
+                die($obj->mensaje_error);
+            }else{
+                var_dump($obj);
+                if($_FILES["foto"]["name"]!=""){
+                    move_uploaded_file($_FILES["foto"]["tmp_name"],"Img/".$obj->mensaje);
+                }
+                /*header("Location:admin.php");
+                exit;*/
+            }
         }
     }
 
     if(isset($_POST["btnContEditarActividad"])){
+        $error_foto=$_FILES["foto"]["name"]!="" && ($_FILES["foto"]["size"]>500000 || !getimagesize($_FILES["foto"]["tmp_name"]));
+        
         $datosActualizar=array("nombre"=>$_POST["nombre"],"descripcion"=>$_POST["descripcion"],"maximo"=>$_POST["maximo"],"aforo"=>$_POST["aforo"],"formacion"=>$_POST["formacion"]);
         $obj=consumir_servicio_REST($enlace."/actualizarActividad/".$_POST["btnContEditarActividad"],"PUT",$datosActualizar);
         if(isset($obj->mensaje_error)){
@@ -139,7 +151,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
         ?>
             <div class='formulario'>
             <h2>Editar actividad</h2>
-                <form method='post' action='admin.php'>
+                <form method='post' action='admin.php' enctype="multipart/form-data">
                     <label for='nombre'>Nombre</label><input type='input' id='nombre' name='nombre' value='<?php
                         if(isset($_POST["btnContEditarActividad"])){
                             echo $_POST["nombre"];
@@ -201,6 +213,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
                             }
                         ?>/>
                     </div>
+                    <label for="foto">Foto: </label><input type="file" name="foto" accept="image/*"/>
                     <button type="input" id="btnContEditarActividad" name="btnContEditarActividad" value="<?php echo $_POST["btnEditarActividad"];?>">Editar</button>
                 </form>
             </div>
@@ -209,7 +222,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
         ?>
             <div class='formulario'>
             <h2>Añadir actividad</h2>
-                <form method='post' action='admin.php'>
+                <form method='post' action='admin.php' enctype="multipart/form-data">
                     <label for='nombre'>Nombre</label><input type='input' id='nombre' name='nombre' value='<?php
                         if(isset($_POST["btnAgregarActividad"])){
                             echo $_POST["nombre"];
@@ -247,6 +260,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
                         }
                     ?>/>
                     </div>
+                    <label for="foto">Foto: </label><input type="file" name="foto" accept="image/*"/>
                     <button type="input" id="btnAgregarActividad" name="btnAgregarActividad">Agregar</button>
                 </form>
             </div>
