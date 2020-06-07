@@ -189,6 +189,25 @@
         }
     }
 
+    function actualizarActividad($id,$nombre,$descripcion,$maximo,$aforo,$formacion){
+        $con=conectar();
+        if(!$con){
+            return array("mensaje_error"=>"Imposible conectar. Error número ".mysqli_connect_errno().":".mysqli_connect_error());
+        }else{
+            mysqli_set_charset($con,"utf8");
+            $consulta="UPDATE jmra_actividades set nombre='".$nombre."', descripcion='".$descripcion."', maximo='".$maximo."', aforo='".$aforo."', formacion='".$formacion."' WHERE idActividad='".$id."'";
+
+            if($resultado=mysqli_query($con,$consulta)){
+                $mensaje="Actividad actualizada correctamente";
+                return array("mensaje"=>$mensaje);
+            }else{ 
+                $mensaje="Imposible conectar. Error número ".mysqli_errno($con).":".mysqli_error($con);
+                mysqli_close($con);
+                return array("mensaje_error"=>$mensaje);
+            }
+        }
+    }
+
     /*function obtener_productos(){
         $con=conectar();
         if(!$con){
