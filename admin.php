@@ -12,7 +12,6 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
 
     if(isset($_POST["btnAgregarActividad"])){
         $datosInsertar=array("nombre"=>$_POST["nombre"],"descripcion"=>$_POST["descripcion"],"maximo"=>$_POST["maximo"],"aforo"=>$_POST["aforo"],"formacion"=>$_POST["formacion"]);
-        var_dump($datosInsertar);
         $obj=consumir_servicio_REST($enlace."/aniadirActividad","POST",$datosInsertar);
         if(isset($obj->mensaje_error)){
             die($obj->mensaje_error);
@@ -23,7 +22,14 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
     }
 
     if(isset($_POST["btnContEditarActividad"])){
-        
+        $datosActualizar=array("nombre"=>$_POST["nombre"],"descripcion"=>$_POST["descripcion"],"maximo"=>$_POST["maximo"],"aforo"=>$_POST["aforo"],"formacion"=>$_POST["formacion"]);
+        $obj=consumir_servicio_REST($enlace."/actualizarActividad/".$_POST["btnContEditarActividad"],"PUT",$datosActualizar);
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);
+        }else{
+            header("Location:admin.php");
+            exit;
+        }
     }
 
     if(isset($_POST["btnBorrarActividad"])){
@@ -195,7 +201,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
                             }
                         ?>/>
                     </div>
-                    <button type="input" id="btnContEditarActividad" name="btnContEditarActividad" value="btnEditarActividad">Editar</button>
+                    <button type="input" id="btnContEditarActividad" name="btnContEditarActividad" value="<?php echo $_POST["btnEditarActividad"];?>">Editar</button>
                 </form>
             </div>
         <?php
