@@ -23,11 +23,17 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
     }
 
     if(isset($_POST["btnContEditarActividad"])){
-
+        
     }
 
     if(isset($_POST["btnBorrarActividad"])){
-        
+        $obj=consumir_servicio_REST($enlace."/borrarActividad/".$_POST["btnBorrarActividad"],"DELETE");
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);
+        }else{
+            header("Location:admin.php");
+            exit;
+        }
     }
 ?>
 
