@@ -198,13 +198,19 @@
         }
     }
 
-    function actualizarActividad($id,$nombre,$descripcion,$maximo,$aforo,$formacion){
+    function actualizarActividad($id,$nombre,$descripcion,$maximo,$aforo,$formacion,$foto){
         $con=conectar();
         if(!$con){
             return array("mensaje_error"=>"Imposible conectar. Error número ".mysqli_connect_errno().":".mysqli_connect_error());
         }else{
             mysqli_set_charset($con,"utf8");
-            $consulta="UPDATE jmra_actividades set nombre='".$nombre."', descripcion='".$descripcion."', maximo='".$maximo."', aforo='".$aforo."', formacion='".$formacion."' WHERE idActividad='".$id."'";
+            if($foto!=""){  
+                $array=explode(".",$foto);
+				$extension=end($array);
+                $consulta="UPDATE jmra_actividades set nombre='".$nombre."', descripcion='".$descripcion."', maximo='".$maximo."', aforo='".$aforo."', formacion='".$formacion."', foto='actividad".$id.".".$extension."' WHERE idActividad='".$id."'";
+            }else{
+                $consulta="UPDATE jmra_actividades set nombre='".$nombre."', descripcion='".$descripcion."', maximo='".$maximo."', aforo='".$aforo."', formacion='".$formacion."' WHERE idActividad='".$id."'";
+            }
 
             if($resultado=mysqli_query($con,$consulta)){
                 $mensaje="Actividad actualizada correctamente";
