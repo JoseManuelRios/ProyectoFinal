@@ -3,6 +3,31 @@ session_name("gimnasio");
 session_start();
 
 include("consumir_servicio.php");
+
+if(isset($_POST["btnAgregarClase"])){
+    $indices=array_keys($_POST);
+    $indicesCorrectos=array();
+    foreach($indices as $fila){
+        if(strpos($fila,"/")!==false){
+            array_push($indicesCorrectos,$fila);
+        }
+    }
+    
+    if(isset($_SESSION["idCliente"])){
+        foreach($indicesCorrectos as $fila){
+            $fechaHora=explode("/",$fila);
+            $fecha=$fechaHora[0];
+            $hora=$fechaHora[1];
+            $datosInsertar=array("idActividad"=>$_POST["idActividad"],"idCliente"=>$_SESSION["idCliente"],"fecha"=>$fecha,"hora"=>$hora);
+            $obj=consumir_servicio_REST($enlace."/aniadirClase","POST",$datosInsertar);
+            if(isset($obj->mensaje_error)){
+                die($obj->mensaje_error);
+            }else{
+                var_dump($obj);
+            }
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,8 +80,9 @@ include("consumir_servicio.php");
                     echo "<h3>" . $fila->nombre . "</h3>";
                     echo "<form method='post' action='actividades.php'>";
                     echo "<p>";
-                    echo "<input type='hidden' id='btnActividad' name='btnActividad' value='".$fila->idActividad."'/>";
+                    echo "<input type='hidden' id='idActividad' name='idActividad' value='".$fila->idActividad."'/>";
                     $dias = array();
+                    $infoDias= array();
                     foreach ($clases->tabla as $fila2) {
                         if ($fila->idActividad == $fila2->idActividad && $fila2->info == "si") {
                             $encontrado = false;
@@ -83,11 +109,11 @@ include("consumir_servicio.php");
                         echo $fecha[2] . "-" . $fecha[1] . ": ";
                         foreach ($dias[$dia] as $hora) {
                             $tiempo = explode(":", $hora);
-                            echo "<button type='submit' id='fechaHora' name='fechaHora' value='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."'>".$tiempo[0] . ":" . $tiempo[1] . "</button> - ";
+                            echo "<input type='checkbox' id='fechaHora' name='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."' value='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."'/>".$tiempo[0] . ":" . $tiempo[1] . " - ";
                         }
                         echo "<br/>";
                     }
-                    
+                    echo "<button type='submit' id='btnAgregarClase' name='btnAgregarClase'>Apuntarse</button>";
                     echo "</p>";
                     echo "</form>";
                     echo "</div>";
@@ -109,8 +135,11 @@ include("consumir_servicio.php");
                     echo "<img src='Img/".$fila->foto."' alt='instalaciones' title='instalaciones' />";
                     echo "<div class='textoOpcion'>";
                     echo "<h3>" . $fila->nombre . "</h3>";
+                    echo "<form method='post' action='actividades.php'>";
                     echo "<p>";
+                    echo "<input type='hidden' id='idActividad' name='idActividad' value='".$fila->idActividad."'/>";
                     $dias = array();
+                    $infoDias= array();
                     foreach ($clases->tabla as $fila2) {
                         if ($fila->idActividad == $fila2->idActividad && $fila2->info == "si") {
                             $encontrado = false;
@@ -130,18 +159,20 @@ include("consumir_servicio.php");
                             }
                         }
                     }
-                    //var_dump($dias);
+                    
                     $dias2 = array_keys($dias);
                     foreach ($dias2 as $dia) {
                         $fecha = explode("-", $dia);
                         echo $fecha[2] . "-" . $fecha[1] . ": ";
                         foreach ($dias[$dia] as $hora) {
                             $tiempo = explode(":", $hora);
-                            echo $tiempo[0] . ":" . $tiempo[1] . " - ";
+                            echo "<input type='checkbox' id='fechaHora' name='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."' value='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."'/>".$tiempo[0] . ":" . $tiempo[1] . " - ";
                         }
                         echo "<br/>";
                     }
+                    echo "<button type='submit' id='btnAgregarClase' name='btnAgregarClase'>Apuntarse</button>";
                     echo "</p>";
+                    echo "</form>";
                     echo "</div>";
                     echo "<p>" . $fila->descripcion . "</p>";
                     echo "</div>";
