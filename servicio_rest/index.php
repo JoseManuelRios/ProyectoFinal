@@ -49,6 +49,10 @@
         echo json_encode(actualizarActividad($id,$datos["nombre"],$datos["descripcion"],$datos["maximo"],$datos["aforo"],$datos["formacion"],$datos["foto"]),JSON_FORCE_OBJECT);
     });
 
+    $app->post('/aniadirClase',function(){
+        echo json_encode(aniadirClase($_POST["idActividad"],$_POST["idCliente"],$_POST["fecha"],$_POST["hora"]),JSON_FORCE_OBJECT);
+    });
+
     // Definimos las respuesta de la ruta base con un tipo de consulta GET
     /*$app->get('/productos', function ()
         {
