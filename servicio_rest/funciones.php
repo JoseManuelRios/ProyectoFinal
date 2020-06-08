@@ -223,6 +223,39 @@
         }
     }
 
+    function aniadirClase($idActividad,$idCliente,$fecha,$hora){
+        $con=conectar();
+        if(!$con){
+            return array("mensaje_error"=>"Imposible conectar. Error número ".mysqli_connect_errno().":".mysqli_connect_error());
+        }else{
+            mysqli_set_charset($con,"utf8");
+            $consulta="SELECT * FROM jmra_clases WHERE fecha='".$fecha."' and hora='".$hora."' and info='si'";
+            if($resultado=mysqli_query($con,$consulta)){
+                if(mysqli_num_rows($resultado)>1){
+                    $fila=mysqli_fetch_assoc($resultado);
+                    $consulta2="INSERT into jmra_clases(idActividad,idCliente,idMonitor,idAula,fecha,hora) values('".$idActividad."','".$idCliente."','".$fila["idMonitor"]."','".$fila["idAula"]."','".$fecha."','".$hora."')";
+                    if($resultado2=mysqli_query($con,$consulta2)){
+                        $mensaje="Clase introducida correctamente";
+                        return array("mensaje"=>$mensaje);
+                    }else{
+                        $mensaje="Imposible conectar. Error número ".mysqli_errno($con).":".mysqli_error($con);
+                    mysqli_close($con);
+                    return array("mensaje_error"=>$mensaje);
+                    }
+                }else{
+                    $clases=array();
+                    while($fila=mysqli_fetch_assoc($resultado)){
+                        $clases[]=$fila;
+                    }
+                }
+            }else{ 
+                $mensaje="Imposible conectar. Error número ".mysqli_errno($con).":".mysqli_error($con);
+                mysqli_close($con);
+                return array("mensaje_error"=>$mensaje);
+            }
+        }
+    }
+
     /*function obtener_productos(){
         $con=conectar();
         if(!$con){
