@@ -137,6 +137,7 @@ section > #actividadesFormacion{
         margin:0;
         width:45%;
         flex-basis:45%;
+        height:100%;
     }
 
     #actividades > .opcion > img{
@@ -171,7 +172,6 @@ section > #actividadesFormacion{
 
     .opcion > p{
         width:50%;
-        height:100%;
         position:absolute;
         top:60%;
         left:0%;
