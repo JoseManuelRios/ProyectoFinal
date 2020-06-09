@@ -21,7 +21,7 @@
     });
 
     $app->post('/login', function(){
-        echo json_encode(login($_POST["idCliente"],$_POST["clave"]),JSON_FORCE_OBJECT);
+        echo json_encode(login($_POST["correo"],$_POST["clave"]),JSON_FORCE_OBJECT);
     });
 
     $app->get('/obtenerTabla/:tabla',function($tabla){
