@@ -4,7 +4,6 @@ $(document).ready(function(){
         var width=$(window).width();
         if(width>100){
             if(height>100) {
-
                 $(".sticky").addClass("fijar");
                 $("nav").css({"opacity":"80%"});
                 $("section").css({"padding-top":"10vh"});
@@ -31,11 +30,13 @@ $(document).ready(function(){
             $("section").addClass("abrir");
             $("footer").css("opacity",0.5);
             $("section").removeClass("cerrar");
-            $("#myNav").width("75%");
+            $("#myNav").width("100%");
+            $("nav").css("opacity",1);
             $("body").css("overflow","hidden");
         }else{
             $("section").addClass("cerrar");
             $("footer").css("opacity",1);
+            $("nav").css("opacity",0.8);
             $("section").removeClass("abrir");
             $("#myNav").width("0%");
             $("body").css("overflow","auto");
