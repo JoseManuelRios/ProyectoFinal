@@ -31,7 +31,7 @@ if(isset($_POST["btnRegistro"])){
         $planPago="";
         if($_POST["edad"]<18){
             $planPago=1;
-        }elseif($_POST["edad"]>=18 && $_POST["edad"]>60){
+        }elseif($_POST["edad"]>=18 && $_POST["edad"]<60){
             $planPago=2;
         }else{
             $planPago=3;
