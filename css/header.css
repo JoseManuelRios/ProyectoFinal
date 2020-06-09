@@ -125,6 +125,14 @@ nav div h2{
     text-align: center;
     background-color:grey;
   }
+
+  .overlay-content button{
+      border-style:none;
+      background-color:#DDD;
+      text-decoration: none;
+      font-size:2rem;
+      font-style:none;
+  }
   
   .overlay a {
     padding: 8px;
@@ -335,7 +343,21 @@ nav div h2{
         padding:15% 0;
     }
 
+    #menu a li button{
+        font-size:1.1em;
+        background-color:#222;
+        color:lightgreen;
+        border-style:none;
+        font-style:none;
+    }
+
     #menu a:hover li{
+        background-color:lawngreen;
+        color:black;
+        transition:0.5s;
+    }
+
+    #menu a:hover li button{
         background-color:lawngreen;
         color:black;
         transition:0.5s;
