@@ -48,6 +48,33 @@
         }
     }
 
+    function obtenerCorreo($correo){
+        $con=conectar();
+        if(!$con){
+            return array("mensaje_error"=>"Imposible conectar. Error número ".mysqli_connect_errno().":".mysqli_connect_error());
+        }else{
+            mysqli_set_charset($con,"utf8");
+            $consulta="SELECT * FROM jmra_clientes WHERE correo='".$correo."'";
+            
+            if($resultado=mysqli_query($con,$consulta)){
+
+                if(mysqli_num_rows($resultado)>0){
+                    mysqli_free_result($resultado);
+                    mysqli_close($con);
+                    return array("correo"=>"Existe un usuario con el correo ".$correo);
+                }else{
+                    mysqli_free_result($resultado);
+                    mysqli_close($con);
+                    return array("mensaje"=>"No existe ningun usuario con el correo ".$correo);
+                }
+            }else{
+                $mensaje="Imposible conectar. Error número ".mysqli_errno($con).":".mysqli_error($con);
+                mysqli_close($con);
+                return array("mensaje_error"=>$mensaje);
+            }
+        }
+    }
+
     function login($correo,$clave){
         $con=conectar();
         if(!$con){
