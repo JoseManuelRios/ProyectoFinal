@@ -9,28 +9,22 @@
         exit;
     }
 
-    $error_id=true;
-    $error_clave=true;
+    $errorLogin=false;
     if(isset($_POST["btnLogin"])){
-        $error_id=$_POST["idCliente"]=="" || !is_numeric($_POST["idCliente"]);
-        $error_clave=$_POST["clave"]=="";
 
-        $correcto=!$error_id && !$error_clave;
+        $datosLogin=Array("correo"=>$_POST["correo"],"clave"=>md5($_POST["clave"]));
+        $obj=consumir_servicio_REST($enlace."/login","POST",$datosLogin);
 
-        if($correcto){
-            $datosLogin=Array("idCliente"=>$_POST["idCliente"],"clave"=>md5($_POST["clave"]));
-            $obj=consumir_servicio_REST($enlace."/login","POST",$datosLogin);
-
-            if(isset($obj->mensaje_error)){
-                die($obj->mensaje_error);
-            }elseif(isset($obj->mensaje)){
-               
-            }else{
-                $_SESSION["idCliente"]=$obj->cliente->idCliente;
-                $_SESSION["tipo"]=$obj->cliente->tipoUsuario;
-                header("Location:index.php");
-                exit;
-            }
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);
+        }elseif(isset($obj->mensaje)){
+            $errorLogin=true;
+        }else{
+            $_SESSION["idCliente"]=$obj->cliente->idCliente;
+            $_SESSION["tipo"]=$obj->cliente->tipoUsuario;
+            $errorLogin=false;
+            header("Location:index.php");
+            exit;
         }
     }
 ?>
@@ -59,8 +53,8 @@
             <div class="contenedor2">
                 <h2>Log In</h2>
                 <form method="post" action="login.php">
-                    <label for="idUsuario">ID</label><input type="number" id="idCliente" name="idCliente" value="" />
-                    <label for="clave">Clave</label><input type="password" id="clave" name="clave" />
+                    <label for="idUsuario">Correo</label><input type="text" id="correo" name="correo" value="<?php if($errorLogin){echo $_POST["correo"];}?>"required/>
+                    <label for="clave">Clave</label><input type="password" id="clave" name="clave" required/>
                     <button type="submit" name="btnLogin">Entrar</button>
                     <button type="submit" name="btnIrRegistro">Registrarse</button>
                 </form>
