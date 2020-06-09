@@ -20,6 +20,10 @@
         echo json_encode(obtenerPlanesPago(),JSON_FORCE_OBJECT);
     });
 
+    $app->get('/obtenerCorreo/:correo', function ($correo){
+        echo json_encode(obtenerCorreo($correo),JSON_FORCE_OBJECT);
+    });
+
     $app->post('/login', function(){
         echo json_encode(login($_POST["correo"],$_POST["clave"]),JSON_FORCE_OBJECT);
     });
