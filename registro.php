@@ -25,6 +25,15 @@ if(isset($_POST["btnRegistro"])){
     $error_ciudad=$_POST["ciudad"]=="";
     $error_tarjeta=$_POST["tarjeta"]==""  || !is_numeric($_POST["tarjeta"]);
 
+    if(!$error_correo){
+        $obj=consumir_servicio_REST($enlace."/obtenerCorreo/".$_POST["correo"],"GET");
+        if(isset($obj->mensaje_error)){
+            die($obj->mensaje_error);
+        }elseif(isset($obj->correo)){
+            $error_correo=true;
+        }
+    }
+
     $correcto=!$error_nombre && !$error_apellidos && !$error_clave && !$error_telefono && !$error_edad && !$error_correo && !$error_direccion && !$error_ciudad && !$error_tarjeta;
 
     if($correcto){
@@ -78,24 +87,26 @@ if(isset($_POST["btnVolver"])){
     ?>
     <section>
         <div class="contenedor">
-            <div class="contenedor2">
+            
                 <h2>Registrarse</h2>
                 <form method="post" action="registro.php">
-                    <label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" value="" />
-                    <label for="apellidos">Apellidos</label><input type="text" id="apellidos" name="apellidos" />
-                    <label for="clave">Clave</label><input type="password" id="clave" name="clave" />
-                    <label for="telefono">Telefono</label><input type="text" id="telefono" name="telefono" />
-                    <label for="edad">Edad</label><input type="number" id="edad" name="edad" />
-                    <label for="correo">Correo</label><input type="text" id="correo" name="correo" />
-                    <label for="direccion">Direccion</label><input type="text" id="direccion" name="direccion" />
-                    <label for="ciudad">Ciudad</label><input type="text" id="ciudad" name="ciudad" />
-                    <label for="tarjeta">Nº Tarjeta: </label><input type="text" id="tarjeta" name="tarjeta" />
-                    <label for="observaciones">Observaciones</label><textarea id="observaciones" name="observaciones" rows="7" cols="40"></textarea>
-                    <input type="checkbox" id="terminos" name="terminos" value="terminos" required/><label for="terminos">Acepto los terminos y condiciones</label>
+                    <label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" placeholder="Nombre" value="<?php if(isset($_POST["btnRegistro"]) && $error_correo){echo $_POST["nombre"];}?>" required/>
+                    <label for="apellidos">Apellidos</label><input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" value="<?php if(isset($_POST["btnRegistro"]) && $error_correo){echo $_POST["apellidos"];}?>" required/>
+                    <label for="clave">Clave</label><input type="password" id="clave" name="clave" placeholder="Contraseña" required/>
+                    <label for="telefono">Telefono</label><input type="text" id="telefono" name="telefono" placeholder="Teléfono" value="<?php if(isset($_POST["btnRegistro"]) && $error_correo){echo $_POST["telefono"];}?>" required/>
+                    <label for="edad">Edad</label><input type="number" id="edad" name="edad" placeholder="Edad" value="<?php if(isset($_POST["btnRegistro"]) && $error_correo){echo $_POST["edad"];}?>" required/>
+                    <label for="correo">Correo</label><input type="text" id="correo" name="correo" placeholder="Correo" value="<?php if(isset($_POST["btnRegistro"]) && $error_correo){echo $_POST["correo"];}?>" required/><?php
+                        if(isset($_POST["btnRegistro"]) && $error_correo){echo "<label id='errorCorreo'>Correo en uso. Utilice otro correo</label>";}
+                    ?>
+                    <label for="direccion">Direccion</label><input type="text" id="direccion" name="direccion" placeholder="Dirección" value="<?php if(isset($_POST["btnRegistro"]) && $error_correo){echo $_POST["direccion"];}?>" required/>
+                    <label for="ciudad">Ciudad</label><input type="text" id="ciudad" name="ciudad" placeholder="Ciudad" value="<?php if(isset($_POST["btnRegistro"]) && $error_correo){echo $_POST["ciudad"];}?>" required/>
+                    <label for="tarjeta">Nº Tarjeta: </label><input type="text" id="tarjeta" name="tarjeta" placeholder="Tarjeta" value="<?php if(isset($_POST["btnRegistro"]) && $error_correo){echo $_POST["tarjeta"];}?>" />
+                    <label for="observaciones">Observaciones</label><textarea id="observaciones" name="observaciones" placeholder="Escribe aqui tus observaciones" rows="7" cols="40"><?php if(isset($_POST["btnRegistro"]) && $error_correo){echo $_POST["observaciones"];}?></textarea>
+                    <div><input type="checkbox" id="terminos" name="terminos" value="terminos" value="<?php if(isset($_POST["btnRegistro"]) && $error_correo){echo 'checked';}?>"required/><label for="terminos">Acepto los terminos y condiciones</label></div>
                     <button type="submit" name="btnRegistro">Registrarse</button>
                     <button type="submit" name="btnVolver">Volver</button>
                 </form>
-            </div>
+            
         </div>
     </section>
     <?php
