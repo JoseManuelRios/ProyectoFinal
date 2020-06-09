@@ -48,13 +48,13 @@
         }
     }
 
-    function login($id,$clave){
+    function login($correo,$clave){
         $con=conectar();
         if(!$con){
             return array("mensaje_error"=>"Imposible conectar. Error número ".mysqli_connect_errno().":".mysqli_connect_error());
         }else{
             mysqli_set_charset($con,"utf8");
-            $consulta="SELECT * FROM jmra_clientes WHERE idCliente='".$id."' and clave='".$clave."'";
+            $consulta="SELECT * FROM jmra_clientes WHERE correo='".$correo."' and clave='".$clave."'";
 
             if($resultado=mysqli_query($con,$consulta)){
 
