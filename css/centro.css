@@ -120,6 +120,25 @@ div#tarifas > h2{
     position:relative;
     border:1px solid white;
 }
+
+div.slider{
+    height:100%;
+}
+
+.slider div{
+    height:100%;
+}
+
+.slider img{
+    height:100%;
+    margin:0;
+    border:1px solid lightgreen;
+}
+
+.bx-controls-direction{
+    display:none;
+}
+
 /*Realizamos la vista de tablets*/
 @media all and (min-width:768px) and (max-width:1000px){
     /*SECTION*/
@@ -141,12 +160,6 @@ div#tarifas > h2{
         flex-flow:row;
         flex-wrap:wrap;
         justify-content:space-around;
-    }
-
-    .fotoInstalaciones{
-        display:flex;
-        flex-basis:45%;
-        flex-flow:column;
     }
 }
 
