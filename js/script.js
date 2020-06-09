@@ -4,6 +4,7 @@ $(document).ready(function(){
         var width=$(window).width();
         if(width>100){
             if(height>100) {
+
                 $(".sticky").addClass("fijar");
                 $("nav").css({"opacity":"80%"});
                 $("section").css({"padding-top":"10vh"});
@@ -40,4 +41,6 @@ $(document).ready(function(){
             $("body").css("overflow","auto");
         }
     });
+
+    $('.slider').bxSlider();
 });
