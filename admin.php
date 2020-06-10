@@ -129,13 +129,13 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
 
                     echo "<div id='nombre'>";
                         if($_SESSION["nombreTabla"]=="jmra_actividades"){
-                            echo $fila->nombre;
+                            echo "<form method='post' action='admin.php'><button type='submit' name='btnListarActividad' value='".$fila->idActividad."'>".$fila->nombre."</button></form>";
                         }
                     echo "</div>";
 
                     echo "<div id='opciones'>";
                         if($_SESSION["nombreTabla"]=="jmra_actividades"){
-                            echo "<form method='post' action='admin.php'><button type='submit' name='btnBorrarActividad' value='".$fila->idActividad."' onclick='return confirm(\"¿Estás seguro que deseas borrar la actividad con ID: ".$fila->idActividad."?\");'>Borrar</button><button type='submit' name='btnEditarActividad' value='".$fila->idActividad."'>Editar</button></form>";
+                            echo "<form method='post' action='admin.php'><button type='submit' name='btnBorrarActividad' value='".$fila->idActividad."' onclick='return confirm(\"¿Estás seguro que deseas borrar la actividad con ID: ".$fila->idActividad."?\");'>Borrar</button> - <button type='submit' name='btnEditarActividad' value='".$fila->idActividad."'>Editar</button></form>";
                         }
                     echo "</div>";
                 }
@@ -175,7 +175,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
                         }
                     ?></textarea>
                     <div>
-                        Aforo máximo: <label for="si">Sí</label><input type="radio" id="si" name="maximo" value="si" <?php 
+                        Aforo máximo <div><label for="si">Sí</label><input type="radio" id="si" name="maximo" value="si" <?php 
                             if(isset($_POST["btnContEditarActividad"])){
                                 if($_POST["maximo"]=="si"){
                                     echo "checked";
@@ -192,9 +192,9 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
                         }else{
                             if($actividad->maximo=="no"){echo "checked";}
                         }
-                        ?>/>
+                        ?>/></div>
                     </div>
-                    <label for="aforo">Aforo máximo (en caso de tenerlo):</label><input type="number" id="aforo" name="aforo" value='<?php 
+                    <label for="aforo">Aforo máximo (en caso de tenerlo)</label><input type="number" id="aforo" name="aforo" value='<?php 
                         if(isset($_POST["btnContEditarActividad"])){
                             echo $_POST["aforo"];
                         }else{
@@ -202,7 +202,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
                         }
                     ?>'/>
                     <div>
-                        Formación: <label for="si">Sí</label><input type="radio" id="si" name="formacion" value="si" <?php 
+                        Formación: <div><label for="si">Sí</label><input type="radio" id="si" name="formacion" value="si" <?php 
                             if(isset($_POST["btnContEditarActividad"])){
                                 if($_POST["formacion"]=="si"){
                                     echo "checked";
@@ -219,13 +219,16 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
                             }else{
                                 if($actividad->formacion=="no"){echo "checked";}
                             }
-                        ?>/>
+                        ?>/></div>
                     </div>
                     <label for="foto">Foto: </label><input type="file" name="foto" accept="image/*"/>
                     <button type="input" id="btnContEditarActividad" name="btnContEditarActividad" value="<?php echo $_POST["btnEditarActividad"];?>">Editar</button>
+                    <button type="input" id="btnVolver" name="btnVolver" >Volver</button>
                 </form>
             </div>
         <?php
+                }elseif(isset($_POST["btnListarActividad"])){
+                    
                 }else{
         ?>
             <div class='formulario'>
@@ -242,7 +245,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
                         }
                     ?></textarea>
                     <div>
-                        Aforo máximo: <label for="si">Sí</label><input type="radio" id="si" name="maximo" value="si" <?php
+                        <div>Aforo máximo</div> <div><label for="si">Sí</label><input type="radio" id="si" name="maximo" value="si" <?php
                             if(!isset($_POST["btnAgregarActividad"]) || isset($_POST["maximo"]) && $_POST["maximo"]=="si"){
                                 echo "checked";
                             }
@@ -250,15 +253,15 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
                             if(isset($_POST["maximo"]) && $_POST["maximo"]=="no"){
                                 echo "checked";
                             }
-                        ?>/>
+                        ?>/></div>
                     </div>
-                    <label for="aforo">Aforo máximo (en caso de tenerlo):</label><input type="number" id="aforo" name="aforo" value='<?php
+                    <label for="aforo">Aforo máximo (en caso de tenerlo)</label><input type="number" id="aforo" name="aforo" value='<?php
                         if(isset($_POST["btnAgregarActividad"])){
                             echo $_POST["aforo"];
                         }
                     ?>'/>
                     <div>
-                        Formación: <label for="si">Sí</label><input type="radio" id="si" name="formacion" value="si" <?php
+                        <div>Formación</div> <div><label for="si">Sí</label><input type="radio" id="si" name="formacion" value="si" <?php
                             if(!isset($_POST["btnAgregarActividad"]) || isset($_POST["formacion"]) && $_POST["formacion"]=="si"){
                                 echo "checked";
                             }
@@ -266,7 +269,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
                         if(isset($_POST["formacion"]) && $_POST["formacion"]=="no"){
                             echo "checked";
                         }
-                    ?>/>
+                    ?>/></div>
                     </div>
                     <label for="foto">Foto: </label><input type="file" name="foto" accept="image/*"/>
                     <button type="input" id="btnAgregarActividad" name="btnAgregarActividad">Agregar</button>
