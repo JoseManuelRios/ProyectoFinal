@@ -16,6 +16,9 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
 
         $correcto=!$error_foto;
         if($correcto){
+            if($_POST["aforo"]==""){
+                $_POST["aforo"]=0;
+            }
             $datosInsertar=array("nombre"=>$_POST["nombre"],"descripcion"=>$_POST["descripcion"],"maximo"=>$_POST["maximo"],"aforo"=>$_POST["aforo"],"formacion"=>$_POST["formacion"],"foto"=>$_FILES["foto"]["name"]);
             $obj=consumir_servicio_REST($enlace."/aniadirActividad","POST",$datosInsertar);
             if(isset($obj->mensaje_error)){
@@ -64,7 +67,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <title>SPORT DESIGN</title>
