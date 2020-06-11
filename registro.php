@@ -66,7 +66,7 @@ if(isset($_POST["btnVolver"])){
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <title>SPORT DESIGN - Log In</title>
@@ -90,7 +90,7 @@ if(isset($_POST["btnVolver"])){
     <section>
         <div class="contenedor">
             
-                <h2>Registrarse</h2>
+                <h1>Registrarse</h1>
                 <form method="post" action="registro.php">
                     <label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" placeholder="Nombre" value="<?php if(isset($_POST["btnRegistro"]) && $error_correo){echo $_POST["nombre"];}?>" required/>
                     <label for="apellidos">Apellidos</label><input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" value="<?php if(isset($_POST["btnRegistro"]) && $error_correo){echo $_POST["apellidos"];}?>" required/>
