@@ -41,7 +41,7 @@ div#info{
     flex-basis:45%;
 }
 
-#info > div#infoGeneral > h2{
+#info > div#infoGeneral > h1{
     width:100%;
     margin:4vh auto 1vh;
     text-align:center;
@@ -148,7 +148,7 @@ div.slider{
 }
 
 .slider img{
-    height:100%;
+    width:100%;
     margin:0;
     border:1px solid lightgreen;
 }
@@ -191,7 +191,7 @@ div.slider{
         flex-wrap:wrap;
     }
 
-    #info h2{
+    #info h1{
         flex-basis:80%;
     }
 
