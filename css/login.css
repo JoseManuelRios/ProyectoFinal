@@ -3,6 +3,11 @@
     box-sizing:border-box;
     margin:0;
     padding:0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+h1,h2,h3{
+    font-family: 'Rubik', sans-serif;
 }
 
 body{
@@ -38,6 +43,8 @@ hr{
 .contenedor h2{
     color:white;
     text-align:center;
+    font-size:2em;
+    margin:0 auto 3vh;
 }
 
 .contenedor form{
@@ -46,8 +53,16 @@ hr{
     flex-flow:column;
     flex-wrap:nowrap;
     border:1px solid lightgreen;
-    margin:1vh auto;
-    background-color:#fafafa;
+    margin:0 auto;
+    background-color:#666;
+}
+
+.contenedor form:nth-child(2){
+    border-bottom:0;
+}
+
+.contenedor form:nth-child(3){
+    border-top:0;
 }
 
 .contenedor form label{
@@ -59,7 +74,10 @@ hr{
 .contenedor form input{
     width:80%;
     align-self:center;
+    height:2em;
+    padding:1em;
     margin-bottom:2vh;
+    border-radius:5px;
 }
 
 .contenedor form textarea{
