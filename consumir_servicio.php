@@ -27,5 +27,5 @@ function consumir_servicio_REST($url, $metodo, $datos = null)
     }
 }
 
-$enlace="http://localhost/JMRA/servicio_rest";
+$enlace="http://icarosproject.com/PROY/JMRA/servicio_rest";
 ?>
