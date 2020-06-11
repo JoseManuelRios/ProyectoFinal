@@ -11,7 +11,7 @@ if (isset($_POST["btnCerrarSesion"])) {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <title>SPORT DESIGN</title>
@@ -36,7 +36,7 @@ if (isset($_POST["btnCerrarSesion"])) {
         <div id="cabecera">
             <img src="Img/fondo.jpg" alt="imagen cabecera" title="imagen cabecera" />
             <div id="textoCabecera">
-                <p>SPORT DESIGN</p>
+                <h1>SPORT DESIGN</h1>
                 <p>Aqui va el eslogan del centro Aqui va el eslogan del centro Aqui va el eslogan del centro</p>
             </div>
         </div>
@@ -44,26 +44,26 @@ if (isset($_POST["btnCerrarSesion"])) {
         <h2>Ven a conocernos</h2>
 
         <div id="opciones">
-            <div id="opcion">
+            <div class="opcion">
                 <a href="centro.php">
                     <img src="Img/instalaciones.jpg" alt="instalaciones" title="instalaciones" />
-                    <div id="textoOpcion">
+                    <div class="textoOpcion">
                         <h2>INSTALACIONES</h2>
                     </div>
                 </a>
             </div>
-            <div id="opcion">
+            <div class="opcion">
                 <a href="actividades.php">
                     <img src="Img/actividades.jpg" alt="actividades" title="actividades" />
-                    <div id="textoOpcion">
+                    <div class="textoOpcion">
                         <h2>ACTIVIDADES</h2>
                     </div>
                 </a>
             </div>
-            <div id="opcion">
+            <div class="opcion">
                 <a href="registro.php">
                     <img src="Img/registrate.jpeg" alt="registrate" title="registrate" />
-                    <div id="textoOpcion">
+                    <div class="textoOpcion">
                         <h2>REGISTRATE</h2>
                     </div>
                 </a>
