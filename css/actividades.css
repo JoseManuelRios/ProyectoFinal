@@ -23,7 +23,14 @@ hr{
     border:1px solid lightgreen;
 }
 
-section > h2{
+section > h1{
+    width:80%;
+    margin:3vh auto 5vh;
+    text-align:center;
+    color:white;
+}
+
+section > p{
     width:80%;
     margin:3vh auto 1vh;
     text-align:center;
@@ -35,6 +42,7 @@ section > #actividades{
     flex-basis:100%;
     flex-flow:column;
     flex-wrap:nowrap;
+    justify-content:space-around;
 }
 
 section > #actividadesFormacion{
@@ -42,12 +50,15 @@ section > #actividadesFormacion{
     flex-basis:100%;
     flex-flow:column;
     flex-wrap:nowrap;
+    justify-content:space-around;
 }
 
 .opcion{
     position:relative;
     margin:1% auto;
     width:80%;
+    background-color:#666;
+    border-radius:5px;
 }
 
 .opcion img{
@@ -163,6 +174,10 @@ section > #actividadesFormacion{
         margin-bottom:15vh;
     }
 
+    section > h1{
+        margin:3vh auto 10vh;
+    }
+
     section > #actividadesFormacion{
         display:flex;
         flex-basis:100%;
@@ -177,12 +192,13 @@ section > #actividadesFormacion{
         width:45%;
         flex-basis:45%;
         height:100%;
+        margin-bottom:10vh;
     }
 
     #actividades > .opcion > img{
         width:40%;
         top:10%;
-        left:55%;
+        left:60%;
         position:relative;
         filter:brightness(100%);
         border:1px solid lightgreen;
@@ -191,7 +207,7 @@ section > #actividadesFormacion{
     #actividadesFormacion > .opcion > img{
         width:40%;
         top:10%;
-        left:55%;
+        left:60%;
         position:relative;
         filter:brightness(100%);
         border:1px solid lightgreen;
