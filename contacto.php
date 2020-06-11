@@ -5,7 +5,7 @@ session_start();
 include("consumir_servicio.php");
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <title>SPORT DESIGN - Contacto</title>
@@ -28,7 +28,7 @@ include("consumir_servicio.php");
     ?>
     <section>
         <div id="ubicacion">
-            <h2>Contacto</h2>
+            <h1>Contacto</h1>
             <p>Ponte en contacto con nosotros si tienes cualquier duda</p>
             <img src="Img/mapa.png" alt="mapa" title="mapa" />
         </div>
