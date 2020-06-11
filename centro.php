@@ -12,14 +12,16 @@ include("consumir_servicio.php");
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/centro.css"/>
     <!-- Iconos diseñados por <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</a> -->
     <script type='text/javascript' src='jq/jquery-3.1.1.min.js'></script>
     <script type='text/javascript' src='js/jquery.bxslider.js'></script>
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="css/header.css" />
     <link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="css/centro.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Rubik:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -28,12 +30,14 @@ include("consumir_servicio.php");
     ?>
     <section>
         <div id="info">
-            <h2>SPORT DESIGN</h2>
             <div id="infoGeneral">
+                <h2>SPORT DESIGN</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque quos, temporibus vel velit dolore cupiditate incidunt voluptatibus ratione distinctio suscipit odio provident quia aspernatur. Magni nulla aliquid laboriosam ratione exercitationem?</p>
                 <img src="Img/instalaciones.jpg" alt="imagen cabecera" title="imagen cabecera" />
             </div>
-            <img src="Img/mapa.png" alt="mapa" title="mapa" />
+            <div id="mapa">
+                <img src="Img/mapa.png" alt="mapa" title="mapa" />
+            </div>
         </div>
 
         <hr />
@@ -74,7 +78,7 @@ include("consumir_servicio.php");
                     <img src="Img/registrate.jpeg" alt="actividades" title="actividades" />
                 </div>
                 <div>
-                    <img src="Img/fondo.jpg" alt="actividades" title="actividades" />
+                    <img src="Img/actividades2.jpg" alt="actividades" title="actividades" />
                 </div>
             </div>
         </div>
