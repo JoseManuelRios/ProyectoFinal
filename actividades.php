@@ -22,8 +22,6 @@ if(isset($_POST["btnAgregarClase"])){
             $obj=consumir_servicio_REST($enlace."/aniadirClase","POST",$datosInsertar);
             if(isset($obj->mensaje_error)){
                 die($obj->mensaje_error);
-            }else{
-                var_dump($obj);
             }
         }
     }
@@ -36,13 +34,15 @@ if(isset($_POST["btnAgregarClase"])){
     <title>SPORT DESIGN - Actividades</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="css/actividades.css" />
     <!-- Iconos diseñados por <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</a> -->
     <script type='text/javascript' src='jq/jquery-3.1.1.min.js'></script>
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="css/header.css" />
     <link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="css/actividades.css" />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Rubik:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -106,14 +106,18 @@ if(isset($_POST["btnAgregarClase"])){
                     $dias2 = array_keys($dias);
                     foreach ($dias2 as $dia) {
                         $fecha = explode("-", $dia);
-                        echo $fecha[2] . "-" . $fecha[1] . ": ";
+                        echo "<div class='fecha'>".$fecha[2] . "-" . $fecha[1] . "</div>";
+                        echo "<div class='hora'>";
                         foreach ($dias[$dia] as $hora) {
                             $tiempo = explode(":", $hora);
-                            echo "<input type='checkbox' id='fechaHora' name='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."' value='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."'/>".$tiempo[0] . ":" . $tiempo[1] . " - ";
+                            echo "<input type='checkbox' id='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."' name='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."' value='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."'/><label for='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."'>".$tiempo[0] . ":" . $tiempo[1] . "</label> - ";
                         }
+                        echo "</div>";
                         echo "<br/>";
                     }
-                    echo "<button type='submit' id='btnAgregarClase' name='btnAgregarClase'>Apuntarse</button>";
+                    if(isset($_SESSION["idCliente"])){
+                        echo "<button type='submit' id='btnAgregarClase' name='btnAgregarClase'>Apuntarse</button>";
+                    }
                     echo "</p>";
                     echo "</form>";
                     echo "</div>";
@@ -163,14 +167,18 @@ if(isset($_POST["btnAgregarClase"])){
                     $dias2 = array_keys($dias);
                     foreach ($dias2 as $dia) {
                         $fecha = explode("-", $dia);
-                        echo $fecha[2] . "-" . $fecha[1] . ": ";
+                        echo "<div class='fecha'>".$fecha[2] . "-" . $fecha[1] . "</div>";
+                        echo "<div class='hora'>";
                         foreach ($dias[$dia] as $hora) {
                             $tiempo = explode(":", $hora);
-                            echo "<input type='checkbox' id='fechaHora' name='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."' value='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."'/>".$tiempo[0] . ":" . $tiempo[1] . " - ";
+                            echo "<input type='checkbox' id='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."' name='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."' value='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."'/><label for='".$fecha[0]."-".$fecha[1]."-".$fecha[2]."/".$tiempo[0].":".$tiempo[1].":".$tiempo[2]."'>".$tiempo[0] . ":" . $tiempo[1] . "</label> - ";
                         }
+                        echo "</div>";
                         echo "<br/>";
                     }
-                    echo "<button type='submit' id='btnAgregarClase' name='btnAgregarClase'>Apuntarse</button>";
+                    if(isset($_SESSION["idCliente"])){
+                        echo "<button type='submit' id='btnAgregarClase' name='btnAgregarClase'>Apuntarse</button>";
+                    }
                     echo "</p>";
                     echo "</form>";
                     echo "</div>";
