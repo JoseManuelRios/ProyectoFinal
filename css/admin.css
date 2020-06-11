@@ -77,6 +77,14 @@ div#tabla > div#opciones{
     background-color:#333;
 }
 
+div#tabla > div#opciones button{
+    border:0;
+    background-color:transparent;
+    color:white;
+    text-decoration:underline;
+    cursor:pointer;
+}
+
 div.formulario{
     margin-top:3vh;
     display:flex;
