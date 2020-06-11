@@ -50,17 +50,15 @@ div#tabla > div#id{
     padding:0.5vh 0;
     text-align:center;
     border:1px solid lightgreen;
-    border-bottom:0;
     background-color:#333;
 }
 
 div#tabla > div#nombre{
-    width:45%;
-    margin:0 0 0 auto;
+    width:80%;
+    margin:0 auto;
     padding:0.5vh 1em;
     text-align:center;
     border:1px solid lightgreen;
-    border-right:0;
     background-color:#333;
 }
 
@@ -73,12 +71,11 @@ div#tabla > div#nombre button{
 }
 
 div#tabla > div#opciones{
-    width:45%;
-    margin:0 auto 0 0;
+    width:80%;
+    margin:0 auto;
     padding:0.5vh 1em;
     text-align:center;
     border:1px solid lightgreen;
-    border-left:0;
     background-color:#333;
 }
 
@@ -127,13 +124,6 @@ div.formulario > form input{
     margin:1vh auto;
     padding:5px;
     border-radius:5px;
-}
-
-div.formulario > form button{
-    width:10%;
-    height:2em;
-    margin:1vh 0;
-    margin-right:auto;
 }
 
 div.formulario > form p{
@@ -191,6 +181,13 @@ div.formulario > form div div input{
     padding-bottom:0;
 }
 
+div.formulario > form button{
+    width:30%;
+    height:2em;
+    margin:1vh 0;
+    margin-right:auto;
+}
+
 @media all and (min-width:1000px){
     div#tabla > div#id{
         width:20%;
@@ -237,5 +234,12 @@ div.formulario > form div div input{
 
     div.formulario > form div div label{
         width:5%;
+    }
+
+    div.formulario > form button{
+        width:10%;
+        height:2em;
+        margin:1vh 0;
+        margin-right:auto;
     }
 }
