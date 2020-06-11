@@ -37,20 +37,20 @@ section > #opciones{
     flex-wrap:nowrap;
 }
 
-#opcion{
+.opcion{
     position:relative;
     border:1px solid lightgreen;
     margin:1% auto;
     width:80%;
 }
 
-#opcion img{
+.opcion img{
     width:100%;
     position:relative;
     filter:brightness(40%);
 }
 
-#opcion #textoOpcion{
+.opcion .textoOpcion{
     width:100%;
     height:100%;
     position:absolute;
@@ -62,7 +62,7 @@ section > #opciones{
     flex-flow:column;
 }
 
-#textoOpcion > h2{
+.textoOpcion > h2{
     text-align:center;
     width:80%;
     margin:auto;
@@ -83,7 +83,7 @@ section > #opciones{
         justify-content:space-around;
     }
 
-    #opcion{
+    .opcion{
         width:45%;
     }
 }
@@ -99,7 +99,7 @@ section > #opciones{
         justify-content:space-around;
     }
 
-    #opcion{
+    .opcion{
         width:30%;
     }
 }
