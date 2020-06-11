@@ -72,13 +72,15 @@ if(isset($_POST["btnVolver"])){
     <title>SPORT DESIGN - Log In</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="css/registro.css" />
     <!-- Iconos diseñados por <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</a> -->
     <script type='text/javascript' src='jq/jquery-3.1.1.min.js'></script>
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="css/header.css" />
     <link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="css/registro.css" />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Rubik:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -104,6 +106,8 @@ if(isset($_POST["btnVolver"])){
                     <label for="observaciones">Observaciones</label><textarea id="observaciones" name="observaciones" placeholder="Escribe aqui tus observaciones" rows="7" cols="40"><?php if(isset($_POST["btnRegistro"]) && $error_correo){echo $_POST["observaciones"];}?></textarea>
                     <div><input type="checkbox" id="terminos" name="terminos" value="terminos" value="<?php if(isset($_POST["btnRegistro"]) && $error_correo){echo 'checked';}?>"required/><label for="terminos">Acepto los terminos y condiciones</label></div>
                     <button type="submit" name="btnRegistro">Registrarse</button>
+                </form>
+                <form method="post" action="registro.php">
                     <button type="submit" name="btnVolver">Volver</button>
                 </form>
             
