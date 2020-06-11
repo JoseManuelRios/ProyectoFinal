@@ -3,6 +3,11 @@
     box-sizing:border-box;
     margin:0;
     padding:0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+h1,h2,h3{
+    font-family: 'Rubik', sans-serif;
 }
 
 body{
@@ -82,14 +87,48 @@ section > #actividadesFormacion{
     font-size:1.2em;
 }
 
-.textoOpcion > p{
+.textoOpcion p{
     text-align:center;
-    width:80%;
+    width:100%;
     margin:2vh auto;
     color:white;
     font-weight:bold;
     font-size:1em;
+    margin-top:auto;
 }
+
+.opcion .textoOpcion form{
+    display:flex;
+    flex-flow:row;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.opcion .textoOpcion form div.fecha{
+    width:20%;
+    padding:1vh;
+    color:white;
+    text-align:center;
+    background-color:#555;
+    border:1px solid lightgreen;
+}
+
+.opcion .textoOpcion form div.hora{
+    width:70%;
+    padding:1vh;
+    color:white;
+    background-color:#555;
+    text-align:center;
+    border:1px solid lightgreen;
+}
+
+.opcion .textoOpcion form button{
+    margin:1vh auto;
+}
+
+/*.textoOpcion form div input{
+    display:none;
+}*/
 
 /*Realizamos la vista de tablets*/
 @media all and (min-width:768px) and (max-width:1000px){
@@ -173,7 +212,7 @@ section > #actividadesFormacion{
     .opcion > p{
         width:50%;
         position:absolute;
-        top:60%;
+        bottom:0%;
         left:0%;
         display:flex;
         flex-basis:100%;
