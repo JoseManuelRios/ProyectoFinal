@@ -3,6 +3,11 @@
     box-sizing:border-box;
     margin:0;
     padding:0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+h1,h2,h3{
+    font-family: 'Rubik', sans-serif;
 }
 
 body{
@@ -21,21 +26,34 @@ hr{
 div#info{
     width:80%;
     margin:0 auto 2vh;
+    display:flex;
+    flex-flow:row;
+    flex-wrap:nowrap;
+    justify-content:space-around;
 }
 
-#info > h2{
+#info > div#infoGeneral{
+    flex-basis:100%;
+}
+
+#info > div#mapa{
+    display:none;
+    flex-basis:45%;
+}
+
+#info > div#infoGeneral > h2{
     width:100%;
-    margin:3vh auto 1vh;
+    margin:4vh auto 1vh;
     text-align:center;
     color:white;
 }
 
-#info > div > img{
+#info > div#infoGeneral > img{
     border:1px solid lightgreen;
     width:100%;
 }
 
-#info > img{
+#info > div#mapa > img{
     display:none;
 }
 
@@ -177,14 +195,19 @@ div.slider{
         flex-basis:80%;
     }
 
-    #info #infoGeneral{
+    #info > div#infoGeneral{
         flex-basis:45%;
     }
 
-    #info > img{
-        display:flex;
-        margin:auto auto 0;
+    #info > div#mapa{
+        display:block;
         flex-basis:45%;
+    }
+
+    #info > div#mapa > img{
+        display:block;
+        width:100%;
+        margin:20vh auto;
     }
 
     #tarifas{
