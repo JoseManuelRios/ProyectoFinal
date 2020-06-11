@@ -35,13 +35,15 @@
     <title>SPORT DESIGN - Log In</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="css/login.css" />
     <!-- Iconos diseñados por <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</a> -->
     <script type='text/javascript' src='jq/jquery-3.1.1.min.js'></script>
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="css/header.css" />
     <link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="css/login.css" />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Rubik:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -56,6 +58,8 @@
                     <label for="idUsuario">Correo</label><input type="text" id="correo" name="correo" value="<?php if($errorLogin){echo $_POST["correo"];}?>"required/>
                     <label for="clave">Clave</label><input type="password" id="clave" name="clave" required/>
                     <button type="submit" name="btnLogin">Entrar</button>
+                </form>
+                <form method="post" action="login.php">
                     <button type="submit" name="btnIrRegistro">Registrarse</button>
                 </form>
             </div>
