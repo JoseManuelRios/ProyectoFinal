@@ -5,7 +5,7 @@ session_start();
 include("consumir_servicio.php");
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <title>SPORT DESIGN - Actividades</title>
@@ -31,7 +31,7 @@ include("consumir_servicio.php");
     <section>
         <div id="info">
             <div id="infoGeneral">
-                <h2>SPORT DESIGN</h2>
+                <h1>SPORT DESIGN</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque quos, temporibus vel velit dolore cupiditate incidunt voluptatibus ratione distinctio suscipit odio provident quia aspernatur. Magni nulla aliquid laboriosam ratione exercitationem?</p>
                 <img src="Img/instalaciones.jpg" alt="imagen cabecera" title="imagen cabecera" />
             </div>
