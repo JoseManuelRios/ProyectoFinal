@@ -3,6 +3,11 @@
     box-sizing:border-box;
     margin:0;
     padding:0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+h1,h2,h3{
+    font-family: 'Rubik', sans-serif;
 }
 
 body{
@@ -59,24 +64,34 @@ section > #ubicacion p{
     flex-flow:column;
     flex-wrap:nowrap;
     margin:1vh auto;
+    background-color:#555;
+    border-radius:5px;
 }
 
 #contenedor form label{
     color:white;
     flex-basis:80%;
     margin:1vh auto;
+    border-radius:5px;
 }
 
 #contenedor form input{
     width:80%;
     align-self:center;
     margin-bottom:2vh;
+    border-radius:5px;
 }
 
 #contenedor form textarea{
     width:80%;
     align-self:center;
     margin-bottom:2vh;
+    border-radius:5px;
+}
+
+#contenedor form button{
+    width:80%;
+    margin:1vh auto;
 }
 
 /*Realizamos la vista de tablets*/
