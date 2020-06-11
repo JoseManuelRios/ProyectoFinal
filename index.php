@@ -16,14 +16,16 @@ if (isset($_POST["btnCerrarSesion"])) {
 <head>
     <title>SPORT DESIGN</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />  
     <!-- Iconos diseñados por <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</a> -->
     <script type='text/javascript' src='jq/jquery-3.1.1.min.js'></script>
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="css/header.css" />
     <link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Rubik:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>
