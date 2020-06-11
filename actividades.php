@@ -61,8 +61,10 @@ if(isset($_POST["btnAgregarClase"])){
         <h1>Actividades</h1>
 
         <p><?php
-            echo $_SESSION["mensaje"];
-            $_SESSION["mensaje"]="";
+            if(isset($_SESSION["mensaje"])){
+                echo $_SESSION["mensaje"];
+                $_SESSION["mensaje"]="";
+            }
         ?></p>
         <?php
         $obj = consumir_servicio_REST($enlace . "/obtenerTabla/jmra_actividades", "GET");
