@@ -12,7 +12,8 @@ if(isset($_POST["btnAgregarClase"])){
             array_push($indicesCorrectos,$fila);
         }
     }
-    
+
+    $_SESSION["mensaje"]="Te has inscrito correctamente a las siguientes clases: ";
     if(isset($_SESSION["idCliente"])){
         foreach($indicesCorrectos as $fila){
             $fechaHora=explode("/",$fila);
@@ -22,13 +23,20 @@ if(isset($_POST["btnAgregarClase"])){
             $obj=consumir_servicio_REST($enlace."/aniadirClase","POST",$datosInsertar);
             if(isset($obj->mensaje_error)){
                 die($obj->mensaje_error);
+            }else{
+                $obj2=consumir_servicio_REST($enlace."/obtenerActividad/".$_POST["idActividad"],"GET");
+                if(isset($obj->mensaje_error)){
+                    die($obj->mensaje_error);
+                }else{
+                    $_SESSION["mensaje"].=$obj2->actividad->nombre.", ".$fecha." a las ".$hora."; ";
+                }
             }
         }
     }
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <title>SPORT DESIGN - Actividades</title>
@@ -50,8 +58,12 @@ if(isset($_POST["btnAgregarClase"])){
     include_once("header.php");
     ?>
     <section>
-        <h2>Actividades</h2>
+        <h1>Actividades</h1>
 
+        <p><?php
+            echo $_SESSION["mensaje"];
+            $_SESSION["mensaje"]="";
+        ?></p>
         <?php
         $obj = consumir_servicio_REST($enlace . "/obtenerTabla/jmra_actividades", "GET");
 
@@ -80,7 +92,7 @@ if(isset($_POST["btnAgregarClase"])){
                     echo "<h3>" . $fila->nombre . "</h3>";
                     echo "<form method='post' action='actividades.php'>";
                     echo "<p>";
-                    echo "<input type='hidden' id='idActividad' name='idActividad' value='".$fila->idActividad."'/>";
+                    echo "<input type='hidden' name='idActividad' value='".$fila->idActividad."'/>";
                     $dias = array();
                     $infoDias= array();
                     foreach ($clases->tabla as $fila2) {
@@ -130,7 +142,7 @@ if(isset($_POST["btnAgregarClase"])){
 
         <hr />
 
-        <h2>Actividades de formación</h2>
+        <h1>Actividades de formación</h1>
         <div id="actividadesFormacion">
             <?php
             foreach ($actividades->tabla as $fila) {
