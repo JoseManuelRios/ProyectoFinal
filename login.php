@@ -29,7 +29,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <title>SPORT DESIGN - Log In</title>
@@ -53,7 +53,7 @@
     <section>
         <div class="contenedor">
             <div class="contenedor2">
-                <h2>Log In</h2>
+                <h1>Log In</h1>
                 <form method="post" action="login.php">
                     <label for="idUsuario">Correo</label><input type="text" id="correo" name="correo" value="<?php if($errorLogin){echo $_POST["correo"];}?>"required/>
                     <label for="clave">Clave</label><input type="password" id="clave" name="clave" required/>
