@@ -175,7 +175,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
                         }
                     ?></textarea>
                     <div>
-                        Aforo máximo <div><label for="si">Sí</label><input type="radio" id="si" name="maximo" value="si" <?php 
+                        <div>Aforo máximo</div> <div><label for="si">Sí</label><input type="radio" id="si" name="maximo" value="si" <?php 
                             if(isset($_POST["btnContEditarActividad"])){
                                 if($_POST["maximo"]=="si"){
                                     echo "checked";
@@ -202,7 +202,7 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
                         }
                     ?>'/>
                     <div>
-                        Formación: <div><label for="si">Sí</label><input type="radio" id="si" name="formacion" value="si" <?php 
+                        <div>Formación:</div> <div><label for="si">Sí</label><input type="radio" id="si" name="formacion" value="si" <?php 
                             if(isset($_POST["btnContEditarActividad"])){
                                 if($_POST["formacion"]=="si"){
                                     echo "checked";
@@ -228,7 +228,36 @@ if(!isset($_SESSION["tipo"]) || $_SESSION["tipo"]!="admin"){
             </div>
         <?php
                 }elseif(isset($_POST["btnListarActividad"])){
-                    
+
+                    $obj=consumir_servicio_REST($enlace."/obtenerActividad/".$_POST["btnListarActividad"],"GET");
+                    if(isset($obj->mensaje_error)){
+                        die($obj->mennsaje_error);
+                    }else{
+                    ?>
+            <div class='formulario'>
+            <h2>Actividad <?php echo $_POST["btnListarActividad"];?></h2>
+                <form method='post' action='admin.php' enctype="multipart/form-data">
+                    <label for='nombre'>Nombre</label><p><?php
+                        echo $obj->actividad->nombre;
+                    ?></p>
+                    <label for='descripcion'>Descripción</label><p><?php
+                        echo $obj->actividad->descripcion;
+                    ?></p>
+                    <label for='aforo'>Aforo máximo</label><p><?php
+                        echo $obj->actividad->aforo;
+                    ?></p>
+                    <label for="maximo">Aforo máximo (en caso de tenerlo)</label><p><?php
+                        echo $obj->actividad->maximo;
+                    ?></p>
+                    <label for='formacion'>Formación</label><p><?php
+                        echo $obj->actividad->formacion;
+                    ?></p>
+                    <?php echo "<img src='Img/".$obj->actividad->foto."' alt='foto' title='foto'/>";?>
+                    <button type="input" id="btnVolver" name="btnVolver">Volver</button>
+                </form>
+            </div>
+                    <?php
+                    }
                 }else{
         ?>
             <div class='formulario'>
