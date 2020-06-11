@@ -3,6 +3,11 @@
     box-sizing:border-box;
     margin:0;
     padding:0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+h1,h2,h3{
+    font-family: 'Rubik', sans-serif;
 }
 
 body{
@@ -30,6 +35,7 @@ hr{
     color:white;
     flex-basis:80%;
     text-align:center;
+    
 }
 
 .contenedor form{
@@ -40,7 +46,19 @@ hr{
     flex-wrap:wrap;
     border:1px solid lightgreen;
     margin:1vh auto;
+    padding-top:2vh;
     justify-content:space-around;
+    background-color:#555;
+}
+
+.contenedor form:nth-child(2){
+    margin-bottom:0;
+    border-bottom:0;
+}
+
+.contenedor form:nth-child(3){
+    margin-top:0;
+    border-top:0;
 }
 
 .contenedor form label{
