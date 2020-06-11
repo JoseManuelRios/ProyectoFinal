@@ -27,5 +27,5 @@ function consumir_servicio_REST($url, $metodo, $datos = null)
     }
 }
 
-$enlace="http://localhost/proyectoFinal/servicio_rest";
+$enlace="http://localhost/JMRA/servicio_rest";
 ?>
